@@ -1,0 +1,53 @@
+{
+  "name": "@litert/config-loader",
+  "version": "1.0.0",
+  "description": "A configuration file loader for JavaScript application.",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "typings": "./lib/index.d.ts",
+  "scripts": {
+    "prepublishOnly": "npm run rebuild",
+    "build": "tsc -v && tsc -p .",
+    "build-watch": "tsc -v && tsc -w -p .",
+    "rebuild": "npm run clean && npm run lint && npm run build",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "clean": "rm -rf lib examples test",
+    "lint": "./utils/eslint.sh",
+    "prepare": "husky",
+    "test": "node --enable-source-maps --test --experimental-test-coverage lib/**/*.test.js lib/*.js"
+  },
+  "keywords": [
+    "litert",
+    "lrt",
+    "config"
+  ],
+  "author": "Angus.Fenying <fenying@litert.org> (https://fenying.net)",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/litert/config-loader.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/litert/config-loader.js/issues"
+  },
+  "homepage": "https://github.com/litert/config-loader.js#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^19.6.1",
+    "@commitlint/config-conventional": "^19.6.0",
+    "@litert/eslint-plugin-rules": "^0.3.1",
+    "@litert/utils-ts-types": "^1.0.0",
+    "@types/node": "^22.10.2",
+    "husky": "^9.1.7",
+    "typedoc": "^0.28.5",
+    "typescript": "^5.7.2",
+    "undici": "^7.10.0",
+    "yaml": "^2.8.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@litert/utils-object": "^1.0.0",
+    "@litert/utils-string": "^1.0.0"
+  }
+}

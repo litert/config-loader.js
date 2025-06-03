@@ -1,0 +1,6 @@
+{
+    "$[[validate]]": "./rules.json",
+    "name": "Angus",
+    "age": 18,
+    "gender": "Male"
+}
