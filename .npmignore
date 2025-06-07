@@ -22,3 +22,5 @@
 *.test.d.ts
 *.test.js.map
 *.test.d.ts.map
+/docs/website/
+typedoc-sidebar.json

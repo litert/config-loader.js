@@ -22,7 +22,7 @@ npm i @litert/config-loader --save
 
 ## Documentation
 
-- [en-US](./docs/en-us/README.md)
+- [en-US](https://litert.org/projects/config-loader.js/)
 
 ## License
 

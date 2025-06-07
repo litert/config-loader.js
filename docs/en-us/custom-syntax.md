@@ -22,8 +22,8 @@ const loader = new ConfigLoader({
             '.yml': 'yaml',
         }
     }),
-    'opSuffix': '}}',
-    'opPrefix': '{{',
+    'opSuffix': '))',
+    'opPrefix': '((',
     'encodings': BuiltInEnc.getAllBuiltInEncodings(),
     'operators': BuiltInOps.getAllBuiltInOperators(),
 });
@@ -36,15 +36,15 @@ const config = loader.loadSync('./main.json');
 console.log(config);
 ```
 
-Here we set the `opPrefix` to `{{` and `opSuffix` to `}}`, so the syntax of the operators will be `{{<code>:<value>}}`.
+Here we set the `opPrefix` to `((` and `opSuffix` to `))`, so the syntax of the operators will be `((<code>:<value>))`.
 
 Now, create a JSON file for test:
 
 ```json
 {
-    "from_env_abc": "{{env:TEST_ABC}}",
-    "from_env_abc_and_bcd": "{{env:TEST_ABC}} {{env:TEST_BCD}}",
-    "bin01": "{{base64:AAAA}}"
+    "from_env_abc": "((env:TEST_ABC))",
+    "from_env_abc_and_bcd": "((env:TEST_ABC)) ((env:TEST_BCD))",
+    "bin01": "((base64:AAAA))"
 }
 ```
 

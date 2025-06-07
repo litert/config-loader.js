@@ -107,7 +107,7 @@ Check the full example code:
 ## What's Next?
 
 - Read the usage of built-in operators in the [Built-In Operators](./built-in-operators.md) section.
-- Read the API documentation of the library in the [API Documentation](https://litert.org/projects/config-loader.js/api-docs/).
+- Read the API documentation of the library in the [API Documentation](https://litert.org/projects/config-loader.js/api/).
 - Create a custom operator by reading the [Custom Operators](./custom-operators.md) section.
 - Create a custom data reader by reading the [Custom Readers](./custom-readers.md) section.
 - Create a custom encoding by reading the [Custom Encodings](./custom-encodings.md) section.

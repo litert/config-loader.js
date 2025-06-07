@@ -3,38 +3,25 @@ SCRIPT_ROOT=$(cd $(dirname $0); pwd)
 
 cd $SCRIPT_ROOT/..
 
-API_DOC_OUTPUT_DIR=docs/api-docs
-SRC_DIR=src/lib
-
-if [[ -n $(git status --porcelain $SRC_DIR) ]]; then
-    echo "Error: You have unstaged changes. Please commit or stash them before generating API docs."
+if ! utils/generate-api-docs-md.sh; then
+    echo "Error: Failed to generate API docs in Markdown format."
     exit 1
 fi
 
-rm $(find $SRC_DIR -name '*.test.ts' -type f)
+rm -rf docs/website/guides
+rm -rf docs/website/api
 
-rm -rf $API_DOC_OUTPUT_DIR
+mkdir -p docs/website/guides
 
-npx typedoc \
-    --exclude "**/*+(index|.test).ts" \
-    --out $API_DOC_OUTPUT_DIR \
-    --readme none \
-    --name "Documents for @litert/config-loader" \
-    --sourceLinkTemplate "https://github.com/litert/config-loader.js/blob/master/{path}#L{line}" \
-    $SRC_DIR/Declaration.ts \
-    $SRC_DIR/Constants.ts \
-    $SRC_DIR/Loader.ts \
-    $SRC_DIR/Errors.ts \
-    $SRC_DIR/Encodings/*.ts \
-    $SRC_DIR/Operators/*.ts \
-    $SRC_DIR/Readers/*.ts
+cp -r docs/en-us/api docs/website
+cp docs/en-us/*.md docs/website/guides
 
-cd $API_DOC_OUTPUT_DIR/..
+npm i -D vitepress
 
-tar -zcf api-docs.tgz api-docs
+npx vitepress build docs/website
 
-rm -rf api-docs
+npm un -D vitepress
 
-cd $SCRIPT_ROOT/..
+cd $SCRIPT_ROOT/../docs/website/.vitepress/dist
 
-git checkout $SRC_DIR
+tar -zcf ../html-docs.tgz ./*
