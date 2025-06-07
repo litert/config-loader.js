@@ -17,6 +17,9 @@
 import type * as dL from '../Declaration';
 import * as LibYaml from 'yaml';
 
+/**
+ * The encoding decoder for YAML.
+ */
 export class YamlEncoding implements dL.IEncoding {
 
     public readonly name = 'yaml';

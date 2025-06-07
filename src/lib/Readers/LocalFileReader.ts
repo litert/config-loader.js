@@ -20,6 +20,9 @@ import type * as dL from '../Declaration';
 import * as eL from '../Errors';
 import { IDict } from '../_internal/Decl';
 
+/**
+ * The options for the LocalFileReader constructor.
+ */
 export interface ILocalFileReaderOptions {
 
     /**
@@ -37,6 +40,9 @@ export interface ILocalFileReaderOptions {
     encodings: IDict<string>;
 }
 
+/**
+ * The data reader for files in the local file system.
+ */
 export class LocalFileReader implements dL.IDataReader {
 
     private readonly _extensions: IDict<string> = {};

@@ -72,6 +72,9 @@ export interface ILoaderOptions {
     opSuffix?: string;
 }
 
+/**
+ * The loader for configuration.
+ */
 export class ConfigLoader implements dL.ILoader {
 
     private readonly _operators: Record<string, iL.IOperatorInfo> = {};

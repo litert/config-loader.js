@@ -16,6 +16,9 @@
 
 import type * as dL from '../Declaration';
 
+/**
+ * The encoding decoder for JSON.
+ */
 export class JsonEncoding implements dL.IEncoding {
 
     public readonly name = 'json';
