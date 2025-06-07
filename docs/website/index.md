@@ -11,7 +11,7 @@ hero:
       text: Quick Start
       link: /guides/quick-start
     - theme: alt
-      text: API Examples
+      text: API Docs
       link: /api
 
 features:
