@@ -16,6 +16,8 @@ mkdir -p docs/website/guides
 cp -r docs/en-us/api docs/website
 cp docs/en-us/*.md docs/website/guides
 
+sed -i 's/..\/..\//https:\/\/github.com\/litert\/config-loader.js\/blob\/master\//g' docs/website/guides/*.md
+
 npm i -D vitepress
 
 npx vitepress build docs/website

@@ -1,6 +1,6 @@
 # Custom Data Readers
 
-This library provides only one built-in reader, which is the [`LocalFileReader`](../../src//lib/Readers/LocalFileReader.ts).
+This library provides only one built-in reader, which is the [`LocalFileReader`](../../src/lib/Readers/LocalFileReader.ts).
 It's useful for reading files on the local filesystem, but you may need to implement your own readers for other data sources.
 For example:
 
