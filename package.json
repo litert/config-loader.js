@@ -1,6 +1,6 @@
 {
   "name": "@litert/config-loader",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A configuration file loader for JavaScript application.",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",

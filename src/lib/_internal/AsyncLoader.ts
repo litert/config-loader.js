@@ -258,7 +258,10 @@ export class AsyncConfigLoader extends AbstractLoader {
 
             if (_.isObject(v)) {
 
-                const prop: iL.IDict = ret[k] = {};
+                const prop: iL.IDict = ret[k] = typeof (ctx.output as iL.IDict)[k] === 'object' ?
+                    (ctx.output as iL.IDict)[k] as iL.IDict :
+                    {};
+
                 await this._processObject(v as iL.IDict, {
                     ...ctx,
                     'output': prop,

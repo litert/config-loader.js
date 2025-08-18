@@ -1,3 +1,5 @@
 a: 123
 b: false
 d: '{{env:TEST_ABC}}'
+extendsInNest:
+  shouldBePresent: hello world
