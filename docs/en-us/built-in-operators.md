@@ -13,7 +13,7 @@ You can import the built-in operators by 2 ways:
 It's easy to import all built-in operators at once.
 
 ```ts
-import * as BuiltInOps from '@litert/config-loader/lib/BuiltInOperators';
+import * as BuiltInOps from '@litert/config-loader/lib/Operators';
 
 BuiltInOps.registerAllBuiltInOperators(loader);
 ```
@@ -23,7 +23,7 @@ BuiltInOps.registerAllBuiltInOperators(loader);
 Or you can import them ony by one as needed, especially when you need to customize the behavior of some built-int operators (e.g. `EnvironmentVariableOperator` could have a default value instead of throwing exceptions).
 
 ```ts
-import * as BuiltInOps from '@litert/config-loader/lib/BuiltInOperators';
+import * as BuiltInOps from '@litert/config-loader/lib/Operators';
 
 loader.addOperators(new BuiltInOps.DecodeHexOperator());
 ```

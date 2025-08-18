@@ -34,7 +34,7 @@ Defined in: [src/lib/Readers/LocalFileReader.ts:52](https://github.com/litert/co
 
 > **read**(`filePath`): `Promise`\<[`IReadResult`](../../../Declaration/interfaces/IReadResult.md)\>
 
-Defined in: [src/lib/Readers/LocalFileReader.ts:100](https://github.com/litert/config-loader.js/blob/master/src/lib/Readers/LocalFileReader.ts#L100)
+Defined in: [src/lib/Readers/LocalFileReader.ts:94](https://github.com/litert/config-loader.js/blob/master/src/lib/Readers/LocalFileReader.ts#L94)
 
 Read the content of the given path and return the result.
 

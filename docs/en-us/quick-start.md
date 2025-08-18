@@ -18,7 +18,7 @@ npm i yaml # Optional, for YAML support
     import { ConfigLoader } from '@litert/config-loader';
     import { LocalFileReader } from '@litert/config-loader/lib/Readers/LocalFileReader';
     import * as BuiltInEnc from '@litert/config-loader/lib/Encodings';
-    import * as BuiltInOps from '@litert/config-loader/lib/BuiltInOperators';
+    import * as BuiltInOps from '@litert/config-loader/lib/Operators';
 
     const loader = new ConfigLoader({
         'reader': new LocalFileReader({
