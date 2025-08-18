@@ -14,6 +14,6 @@
     },
     "importInArray": [1, 2, 3, "$[[import:file1.yml]]", "$[[base64:AAAABBBB]]"],
     "importFileAsText": "$[[text-file:./file1.yml]]",
-    "importFileAsBinary": "$[[binary-file:./file1.yml]]",
+    "importFileAsBinary": "$[[binary-file:./file3.bin]]",
     "resolveRelativePath": "$[[path:./a/b/c]]"
 }

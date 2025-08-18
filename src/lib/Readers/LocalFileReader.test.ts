@@ -19,7 +19,7 @@ import * as NodeFS from 'node:fs';
 import * as NodePath from 'node:path';
 import * as NodeAssert from 'node:assert';
 import { LocalFileReader } from './LocalFileReader';
-import { E_ENCODING_NOT_FOUND, E_READ_FILE_FAILED } from '../Errors';
+import { E_READ_FILE_FAILED } from '../Errors';
 
 NodeTest.describe('Built-in DataReader: LocalFileReader', () => {
 
@@ -87,33 +87,22 @@ NodeTest.describe('Built-in DataReader: LocalFileReader', () => {
         }
     });
 
-    NodeTest.it('Should throw error if meet unrecognizable file extension', async () => {
+    NodeTest.it('Should return empty type if the extension is unrecognizable', async () => {
 
-        const filePath = __filename + '.map';
+        NodeAssert.strictEqual(
+            reader.readSync(__filename + '.map').encoding,
+            ''
+        );
 
-        try {
-            await reader.read(filePath);
-            NodeAssert.fail('Expected an error to be thrown for unrecognized file extension');
-        }
-        catch (e) {
-            NodeAssert.strictEqual(e instanceof E_ENCODING_NOT_FOUND, true);
-        }
+        NodeAssert.strictEqual(
+            (await reader.read(__filename + '.map')).encoding,
+            ''
+        );
 
-        try {
-            reader.readSync(filePath);
-            NodeAssert.fail('Expected an error to be thrown for unrecognized file extension');
-        }
-        catch (e) {
-            NodeAssert.strictEqual(e instanceof E_ENCODING_NOT_FOUND, true);
-        }
-
-        try {
-            reader.readSync(NodePath.join(__dirname, 'file-without-ext'));
-            NodeAssert.fail('Expected an error to be thrown for unrecognized file extension');
-        }
-        catch (e) {
-            NodeAssert.strictEqual(e instanceof E_ENCODING_NOT_FOUND, true);
-        }
+        NodeAssert.strictEqual(
+            reader.readSync(NodePath.join(__dirname, '../../test-data/LocalFileReader/file-without-ext')).encoding,
+            ''
+        );
     });
 
     NodeTest.it('Should resolve absolute path as it is', async () => {

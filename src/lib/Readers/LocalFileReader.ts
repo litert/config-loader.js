@@ -77,17 +77,11 @@ export class LocalFileReader implements dL.IDataReader {
     public readSync(filePath: string): dL.IReadResult {
 
         const fileExtension = this._readExtension(filePath);
-        const encoding = this._extensions[fileExtension] ?? null;
-
-        if (!encoding) {
-
-            throw new eL.E_ENCODING_NOT_FOUND({ fileExtension });
-        }
 
         try {
 
             return {
-                encoding,
+                encoding: this._extensions[fileExtension] ?? '',
                 content: NodeFS.readFileSync(filePath),
             };
         }
@@ -100,17 +94,11 @@ export class LocalFileReader implements dL.IDataReader {
     public async read(filePath: string): Promise<dL.IReadResult> {
 
         const fileExtension = this._readExtension(filePath);
-        const encoding = this._extensions[fileExtension] ?? null;
-
-        if (!encoding) {
-
-            throw new eL.E_ENCODING_NOT_FOUND({ fileExtension });
-        }
 
         try {
 
             return {
-                encoding,
+                encoding: this._extensions[fileExtension] ?? '',
                 content: await NodeFS.promises.readFile(filePath),
             };
         }
