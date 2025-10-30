@@ -6,6 +6,9 @@ export default defineConfig({
   title: "@litert/config-loader",
   description: "Documents for @litert/config-loader",
   base: '/projects/config-loader.js/',
+  sitemap: {
+    hostname: 'https://litert.org/projects/config-loader.js/'
+  },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
