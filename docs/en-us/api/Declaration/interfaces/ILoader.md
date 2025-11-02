@@ -2,7 +2,7 @@
 
 # Interface: ILoader
 
-Defined in: [src/lib/Declaration.ts:319](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L319)
+Defined in: [src/lib/Declaration.ts:375](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L375)
 
 The interface for config loader.
 
@@ -12,7 +12,7 @@ The interface for config loader.
 
 > `readonly` **reader**: [`IDataReader`](IDataReader.md)
 
-Defined in: [src/lib/Declaration.ts:324](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L324)
+Defined in: [src/lib/Declaration.ts:380](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L380)
 
 The reader used by the loader to read the data.
 
@@ -22,7 +22,7 @@ The reader used by the loader to read the data.
 
 > **addOperator**(`operator`, `options?`): `this`
 
-Defined in: [src/lib/Declaration.ts:342](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L342)
+Defined in: [src/lib/Declaration.ts:398](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L398)
 
 Add a new operator to the loader.
 
@@ -50,7 +50,7 @@ The options for adding the operator to the loader.
 
 > **getEncodingNames**(): `string`[]
 
-Defined in: [src/lib/Declaration.ts:334](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L334)
+Defined in: [src/lib/Declaration.ts:390](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L390)
 
 Get the list of encoding names registered in the loader.
 
@@ -64,7 +64,7 @@ Get the list of encoding names registered in the loader.
 
 > **getOperatorCodes**(): `string`[]
 
-Defined in: [src/lib/Declaration.ts:355](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L355)
+Defined in: [src/lib/Declaration.ts:411](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L411)
 
 Get the list of operator codes registered in the loader, including the aliases.
 
@@ -78,7 +78,7 @@ Get the list of operator codes registered in the loader, including the aliases.
 
 > **hasEncoding**(`encodingName`): `boolean`
 
-Defined in: [src/lib/Declaration.ts:329](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L329)
+Defined in: [src/lib/Declaration.ts:385](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L385)
 
 Check if the loader has the given encoding registered.
 
@@ -98,7 +98,7 @@ Check if the loader has the given encoding registered.
 
 > **hasOperator**(`operatorCode`): `boolean`
 
-Defined in: [src/lib/Declaration.ts:350](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L350)
+Defined in: [src/lib/Declaration.ts:406](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L406)
 
 Check if the loader has the given operator registered.
 
@@ -118,7 +118,7 @@ Check if the loader has the given operator registered.
 
 > **load**(`path`, `parent?`): `Promise`\<`unknown`\>
 
-Defined in: [src/lib/Declaration.ts:363](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L363)
+Defined in: [src/lib/Declaration.ts:419](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L419)
 
 Load a configuration (file) from the given path.
 
@@ -146,7 +146,7 @@ The path of the parent configuration (file) that is loading this configuration.
 
 > **loadSync**(`path`, `parent?`): `unknown`
 
-Defined in: [src/lib/Declaration.ts:370](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L370)
+Defined in: [src/lib/Declaration.ts:426](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L426)
 
 The synchronous version of `load()`.
 

@@ -4,6 +4,8 @@
 
 Defined in: [src/lib/Operators/Extends.ts:138](https://github.com/litert/config-loader.js/blob/master/src/lib/Operators/Extends.ts#L138)
 
+The interface type for config loader operators.
+
 ## Implements
 
 - [`IOperator`](../../../Declaration/interfaces/IOperator.md)

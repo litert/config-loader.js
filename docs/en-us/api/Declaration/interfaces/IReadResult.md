@@ -2,7 +2,7 @@
 
 # Interface: IReadResult
 
-Defined in: [src/lib/Declaration.ts:38](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L38)
+Defined in: [src/lib/Declaration.ts:54](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L54)
 
 The result of `IReader.read()` method.
 
@@ -12,7 +12,7 @@ The result of `IReader.read()` method.
 
 > **content**: `string` \| `Buffer`\<`ArrayBufferLike`\>
 
-Defined in: [src/lib/Declaration.ts:43](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L43)
+Defined in: [src/lib/Declaration.ts:59](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L59)
 
 The content read by the reader.
 
@@ -22,7 +22,7 @@ The content read by the reader.
 
 > **encoding**: `string`
 
-Defined in: [src/lib/Declaration.ts:50](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L50)
+Defined in: [src/lib/Declaration.ts:66](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L66)
 
 The encoding of the content.
 

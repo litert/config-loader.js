@@ -2,7 +2,7 @@
 
 # Interface: IDataReader
 
-Defined in: [src/lib/Declaration.ts:58](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L58)
+Defined in: [src/lib/Declaration.ts:74](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L74)
 
 The data reader interface for config loader.
 
@@ -14,7 +14,7 @@ It's not just for reading the config data, could also be used by operators to re
 
 > `optional` **read**(`dataPath`): `Promise`\<[`IReadResult`](IReadResult.md)\>
 
-Defined in: [src/lib/Declaration.ts:65](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L65)
+Defined in: [src/lib/Declaration.ts:81](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L81)
 
 Read the content of the given path and return the result.
 
@@ -36,7 +36,7 @@ The path of the data to be read. It could be path of anything, not just a file.
 
 > `optional` **readSync**(`dataPath`): [`IReadResult`](IReadResult.md)
 
-Defined in: [src/lib/Declaration.ts:72](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L72)
+Defined in: [src/lib/Declaration.ts:88](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L88)
 
 The synchronous version of `read()`.
 
@@ -58,7 +58,7 @@ The path of the data to be read. It could be path of anything, not just a file.
 
 > **resolvePath**(`refFile`, `filePath`): `string`
 
-Defined in: [src/lib/Declaration.ts:83](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L83)
+Defined in: [src/lib/Declaration.ts:99](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L99)
 
 Resolve the path of `filePath` relative to `refFile`.
 

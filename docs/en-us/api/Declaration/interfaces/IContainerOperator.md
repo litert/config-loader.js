@@ -2,7 +2,7 @@
 
 # Interface: IContainerOperator
 
-Defined in: [src/lib/Declaration.ts:263](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L263)
+Defined in: [src/lib/Declaration.ts:319](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L319)
 
 The interface for container operators.
 
@@ -12,7 +12,7 @@ The interface for container operators.
 
 > `readonly` **order**: [`EContainerOperatorOrder`](../../Constants/enumerations/EContainerOperatorOrder.md)
 
-Defined in: [src/lib/Declaration.ts:268](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L268)
+Defined in: [src/lib/Declaration.ts:324](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L324)
 
 The application order of the operator.
 
@@ -22,7 +22,7 @@ The application order of the operator.
 
 > **process**(`args`, `context`): `void` \| `Promise`\<`void`\>
 
-Defined in: [src/lib/Declaration.ts:278](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L278)
+Defined in: [src/lib/Declaration.ts:334](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L334)
 
 Process the given arguments and context.
 
@@ -52,7 +52,7 @@ The context in which the operator is being processed.
 
 > **processSync**(`args`, `context`): `void`
 
-Defined in: [src/lib/Declaration.ts:285](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L285)
+Defined in: [src/lib/Declaration.ts:341](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L341)
 
 The synchronous version of `process()`.
 

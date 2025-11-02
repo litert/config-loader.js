@@ -2,7 +2,7 @@
 
 # Interface: IBlockOperator
 
-Defined in: [src/lib/Declaration.ts:215](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L215)
+Defined in: [src/lib/Declaration.ts:250](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L250)
 
 The interface for block operators.
 
@@ -10,9 +10,9 @@ The interface for block operators.
 
 ### process()
 
-> **process**(`operand`, `context`): `void` \| `Promise`\<`void`\>
+> **process**(`operand`, `context`, `options`): `void` \| `Promise`\<`void`\>
 
-Defined in: [src/lib/Declaration.ts:225](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L225)
+Defined in: [src/lib/Declaration.ts:264](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L264)
 
 Process the given operand and context.
 
@@ -32,17 +32,29 @@ The operand to be processed.
 
 The context in which the operator is being processed.
 
+##### options
+
+[`IOperationOptions`](../type-aliases/IOperationOptions.md)
+
+Additional options for processing the operator.
+
 #### Returns
 
 `void` \| `Promise`\<`void`\>
+
+void or a Promise that resolves when processing is complete.
+
+#### Since
+
+v1.1.0: Added `options` parameter.
 
 ***
 
 ### processSync()
 
-> **processSync**(`operand`, `context`): `void`
+> **processSync**(`operand`, `context`, `options`): `void`
 
-Defined in: [src/lib/Declaration.ts:232](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L232)
+Defined in: [src/lib/Declaration.ts:275](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L275)
 
 The synchronous version of `process()`.
 
@@ -55,6 +67,10 @@ The synchronous version of `process()`.
 ##### context
 
 [`IOperatorContext`](IOperatorContext.md)
+
+##### options
+
+[`IOperationOptions`](../type-aliases/IOperationOptions.md)
 
 #### Returns
 

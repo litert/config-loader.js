@@ -2,15 +2,17 @@
 
 # Interface: IOperator
 
-Defined in: [src/lib/Declaration.ts:138](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L138)
+Defined in: [src/lib/Declaration.ts:160](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L160)
+
+The interface type for config loader operators.
 
 ## Properties
 
 ### aliases
 
-> **aliases**: `string`[]
+> `readonly` **aliases**: `string`[]
 
-Defined in: [src/lib/Declaration.ts:161](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L161)
+Defined in: [src/lib/Declaration.ts:183](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L183)
 
 The code aliases of the operator, its format is the same as `code`.
 
@@ -23,9 +25,9 @@ Or add additional aliases to the operator by the `aliases` option in `IAddOperat
 
 ### code
 
-> **code**: `string`
+> `readonly` **code**: `string`
 
-Defined in: [src/lib/Declaration.ts:151](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L151)
+Defined in: [src/lib/Declaration.ts:173](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L173)
 
 The built-in code of the operator, could only contains below characters:
 
@@ -41,15 +43,15 @@ when adding the operator to the loader.
 
 ### modes
 
-> **modes**: `object`
+> `readonly` **modes**: `object`
 
-Defined in: [src/lib/Declaration.ts:166](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L166)
+Defined in: [src/lib/Declaration.ts:188](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L188)
 
 Where the operator should be used.
 
 #### block?
 
-> `optional` **block**: [`IBlockOperator`](IBlockOperator.md)
+> `readonly` `optional` **block**: [`IBlockOperator`](IBlockOperator.md)
 
 The operator object processes the operand when it's under block mode.
 
@@ -57,7 +59,7 @@ The operator object processes the operand when it's under block mode.
 
 #### container?
 
-> `optional` **container**: [`IContainerOperator`](IContainerOperator.md)
+> `readonly` `optional` **container**: [`IContainerOperator`](IContainerOperator.md)
 
 The operator object processes the operand when it's under container mode.
 
@@ -65,7 +67,7 @@ The operator object processes the operand when it's under container mode.
 
 #### inline?
 
-> `optional` **inline**: [`IInlineOperator`](IInlineOperator.md)
+> `readonly` `optional` **inline**: [`IInlineOperator`](IInlineOperator.md)
 
 The operator object processes the operand when it's under inline mode.
 

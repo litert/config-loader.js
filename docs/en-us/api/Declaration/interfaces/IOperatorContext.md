@@ -2,7 +2,9 @@
 
 # Interface: IOperatorContext
 
-Defined in: [src/lib/Declaration.ts:86](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L86)
+Defined in: [src/lib/Declaration.ts:105](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L105)
+
+The interface type of the context passed to operators by the loader.
 
 ## Properties
 
@@ -10,7 +12,7 @@ Defined in: [src/lib/Declaration.ts:86](https://github.com/litert/config-loader.
 
 > `readonly` **currentPath**: `string`
 
-Defined in: [src/lib/Declaration.ts:96](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L96)
+Defined in: [src/lib/Declaration.ts:115](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L115)
 
 The path of the current (nested) configuration (file) reading by the loader.
 
@@ -20,7 +22,7 @@ The path of the current (nested) configuration (file) reading by the loader.
 
 > **inputData**: [`IVessel`](../type-aliases/IVessel.md)
 
-Defined in: [src/lib/Declaration.ts:135](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L135)
+Defined in: [src/lib/Declaration.ts:154](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L154)
 
 The original input data that the operator is working on.
 
@@ -33,7 +35,7 @@ The original input data that the operator is working on.
 
 > **inputEntry**: `string` \| `number`
 
-Defined in: [src/lib/Declaration.ts:109](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L109)
+Defined in: [src/lib/Declaration.ts:128](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L128)
 
 The entry of input data, where to read the data from.
 
@@ -46,7 +48,7 @@ The entry of input data, where to read the data from.
 
 > `readonly` **loader**: [`ILoader`](ILoader.md)
 
-Defined in: [src/lib/Declaration.ts:101](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L101)
+Defined in: [src/lib/Declaration.ts:120](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L120)
 
 The instance of the loader that is reading the configuration.
 
@@ -56,7 +58,7 @@ The instance of the loader that is reading the configuration.
 
 > **output**: [`IVessel`](../type-aliases/IVessel.md)
 
-Defined in: [src/lib/Declaration.ts:127](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L127)
+Defined in: [src/lib/Declaration.ts:146](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L146)
 
 The output vessel that the operator should write the result into.
 
@@ -69,7 +71,7 @@ The output vessel that the operator should write the result into.
 
 > **outputEntry**: `string` \| `number`
 
-Defined in: [src/lib/Declaration.ts:119](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L119)
+Defined in: [src/lib/Declaration.ts:138](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L138)
 
 The entry of output data, where to write the result to.
 
@@ -84,6 +86,6 @@ The value of this field is only for a suggestion, depending on the operator, it 
 
 > `readonly` **rootPath**: `string`
 
-Defined in: [src/lib/Declaration.ts:91](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L91)
+Defined in: [src/lib/Declaration.ts:110](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L110)
 
 The path of the root configuration (file) reading by the loader.

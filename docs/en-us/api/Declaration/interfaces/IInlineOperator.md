@@ -2,7 +2,7 @@
 
 # Interface: IInlineOperator
 
-Defined in: [src/lib/Declaration.ts:194](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L194)
+Defined in: [src/lib/Declaration.ts:216](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L216)
 
 The interface for inline operators.
 
@@ -10,9 +10,9 @@ The interface for inline operators.
 
 ### process()
 
-> **process**(`operand`, `context`): `string` \| `Promise`\<`string`\>
+> **process**(`operand`, `context`, `options`): `string` \| `Promise`\<`string`\>
 
-Defined in: [src/lib/Declaration.ts:202](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L202)
+Defined in: [src/lib/Declaration.ts:229](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L229)
 
 Process the given operand and context, and return the result as a string.
 
@@ -30,17 +30,29 @@ The operand to be processed.
 
 The context in which the operator is being processed.
 
+##### options
+
+[`IOperationOptions`](../type-aliases/IOperationOptions.md)
+
+Additional options for processing the operator.
+
 #### Returns
 
 `string` \| `Promise`\<`string`\>
+
+The result of processing the operand.
+
+#### Since
+
+v1.1.0: Added `options` parameter.
 
 ***
 
 ### processSync()
 
-> **processSync**(`operand`, `context`): `string`
+> **processSync**(`operand`, `context`, `options`): `string`
 
-Defined in: [src/lib/Declaration.ts:209](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L209)
+Defined in: [src/lib/Declaration.ts:240](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L240)
 
 The synchronous version of `process()`.
 
@@ -53,6 +65,10 @@ The synchronous version of `process()`.
 ##### context
 
 [`IOperatorContext`](IOperatorContext.md)
+
+##### options
+
+[`IOperationOptions`](../type-aliases/IOperationOptions.md)
 
 #### Returns
 

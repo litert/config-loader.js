@@ -2,7 +2,7 @@
 
 # Interface: IContainerOperatorArgs
 
-Defined in: [src/lib/Declaration.ts:243](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L243)
+Defined in: [src/lib/Declaration.ts:290](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L290)
 
 The parameters for the `IContainerOperator` interface.
 
@@ -12,7 +12,7 @@ The parameters for the `IContainerOperator` interface.
 
 > **operand**: `null` \| `string`
 
-Defined in: [src/lib/Declaration.ts:250](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L250)
+Defined in: [src/lib/Declaration.ts:297](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L297)
 
 The operand of the operation, if exists.
 
@@ -24,11 +24,31 @@ the `<operand>` part in `$[[op:operand]]`.
 
 ***
 
+### options
+
+> **options**: [`IOperationOptions`](../type-aliases/IOperationOptions.md)
+
+Defined in: [src/lib/Declaration.ts:313](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L313)
+
+The options provided in the operation.
+
+#### Example
+
+```ts
+the options in `$[[op:operand; option1; option2=value2]]`.
+```
+
+#### Since
+
+v1.1.0
+
+***
+
 ### value
 
 > **value**: `unknown`
 
-Defined in: [src/lib/Declaration.ts:257](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L257)
+Defined in: [src/lib/Declaration.ts:304](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L304)
 
 The value of the property.
 

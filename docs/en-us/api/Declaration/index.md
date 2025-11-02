@@ -18,4 +18,5 @@
 
 ## Type Aliases
 
+- [IOperationOptions](type-aliases/IOperationOptions.md)
 - [IVessel](type-aliases/IVessel.md)
