@@ -113,13 +113,13 @@ export class SyncConfigLoader extends AbstractLoader {
 
                 if (blockOp) {
 
-                    blockOp.processSync(op.value ?? '', ctx);
+                    blockOp.processSync(op.value ?? '', ctx, op.options);
                     return;
                 }
 
                 if (inlineOp) {
 
-                    ret = inlineOp.processSync(op.value ?? '', ctx);
+                    ret = inlineOp.processSync(op.value ?? '', ctx, op.options);
                 }
                 else {
 
@@ -157,7 +157,7 @@ export class SyncConfigLoader extends AbstractLoader {
                 });
             }
 
-            str = str.replace(op.expr, inlineOp.processSync(op.value ?? '', ctx));
+            str = str.replace(op.expr, inlineOp.processSync(op.value ?? '', ctx, op.options));
         }
 
         return str;
@@ -222,6 +222,7 @@ export class SyncConfigLoader extends AbstractLoader {
             operator.processSync({
                 operand: op.v,
                 value: op.propValue,
+                options: op.options,
             }, ctx);
         }
 
@@ -239,6 +240,7 @@ export class SyncConfigLoader extends AbstractLoader {
                 operator.processSync({
                     operand: op.v,
                     value: op.propValue,
+                    options: op.options,
                 }, ctx);
                 continue;
             }
@@ -288,6 +290,7 @@ export class SyncConfigLoader extends AbstractLoader {
             operator.processSync({
                 operand: op.v,
                 value: op.propValue,
+                options: op.options,
             }, ctx);
         }
     }

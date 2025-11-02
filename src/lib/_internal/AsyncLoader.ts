@@ -113,13 +113,13 @@ export class AsyncConfigLoader extends AbstractLoader {
 
                 if (blockOp) {
 
-                    await blockOp.process(op.value ?? '', ctx);
+                    await blockOp.process(op.value ?? '', ctx, op.options);
                     return;
                 }
 
                 if (inlineOp) {
 
-                    ret = await inlineOp.process(op.value ?? '', ctx);
+                    ret = await inlineOp.process(op.value ?? '', ctx, op.options);
                 }
                 else {
 
@@ -161,7 +161,7 @@ export class AsyncConfigLoader extends AbstractLoader {
                 });
             }
 
-            str = str.replace(op.expr, await inlineOp.process(op.value ?? '', ctx));
+            str = str.replace(op.expr, await inlineOp.process(op.value ?? '', ctx, op.options));
         }
 
         return str;
@@ -226,6 +226,7 @@ export class AsyncConfigLoader extends AbstractLoader {
             await operator.process({
                 operand: op.v,
                 value: op.propValue,
+                options: op.options,
             }, ctx);
         }
 
@@ -243,6 +244,7 @@ export class AsyncConfigLoader extends AbstractLoader {
                 await operator.process({
                     operand: op.v,
                     value: op.propValue,
+                    options: op.options,
                 }, ctx);
                 continue;
             }
@@ -292,6 +294,7 @@ export class AsyncConfigLoader extends AbstractLoader {
             await operator.process({
                 operand: op.v,
                 value: op.propValue,
+                options: op.options,
             }, ctx);
         }
     }

@@ -1,5 +1,28 @@
 # Changes Logs
 
+## v1.1.0
+
+- feat(loader): added operation options supports
+
+    A new operator options syntax has been introduced to allow users to
+    provide custom options to operators in the configuration file. The syntax
+    is as follows:
+
+    ```yaml
+    inlineMode: abc-$[[op1: operand; a; b = value2; c=; ...]]-def
+    blockMode: $[[op1: operand; a; b = value2; c=; ...]]
+    $[[op3: operand; a; b = value2; c=; ...]]: "containerModeValue"
+    ```
+
+    For example, to provide options to the `EnvironmentVariable` operator:
+
+    ```yaml
+    database:
+      host: $[[env:DB_HOSTNAME; default=localhost]]
+    ```
+
+    Click to read more about [Operation Options](./docs/en-us/operation-options.md).
+
 ## v1.0.1
 
 - fix(loader): should not overwrite object by object in context output.

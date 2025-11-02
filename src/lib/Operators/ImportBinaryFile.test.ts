@@ -79,7 +79,7 @@ async function readFile(
         currentPath,
         output,
         outputEntry: 'test'
-    } as any);
+    } as any, {});
 
     return output['test'];
 }
@@ -97,8 +97,8 @@ function readFileSync(
         loader: { reader },
         currentPath,
         output,
-        outputEntry: 'test'
-    } as any);
+        outputEntry: 'test',
+    } as any, {});
 
     return output['test'];
 }

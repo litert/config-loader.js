@@ -26,6 +26,7 @@ export interface IPropNameOperation {
     v: string | null;
     propValue: unknown;
     inf: iL.IOperatorInfo;
+    options: dL.IOperationOptions;
 }
 
 export abstract class AbstractLoader {
@@ -115,6 +116,7 @@ export abstract class AbstractLoader {
                         v: op.value,
                         inf: opInfo,
                         propValue: data[k],
+                        options: op.options,
                     });
                     delete data[k];
                     break;
@@ -126,6 +128,7 @@ export abstract class AbstractLoader {
                         v: op.value,
                         inf: opInfo,
                         propValue: data[k],
+                        options: op.options,
                     });
                     delete data[k];
                     break;
@@ -137,6 +140,7 @@ export abstract class AbstractLoader {
                         v: op.value,
                         inf: opInfo,
                         propValue: data[k],
+                        options: op.options,
                     };
                     // don't delete the key, as it is used for positional operations
                     break;

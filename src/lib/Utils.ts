@@ -26,6 +26,8 @@ export interface IOperation {
     name: string;
 
     value: string | null;
+
+    options: Record<string, string | true>;
 }
 
 export function parseOperation(input: string, prefix: string, suffix: string): IOperation[] {
@@ -66,11 +68,41 @@ export function parseOperation(input: string, prefix: string, suffix: string): I
             continue;
         }
 
-        const value = colonIndex === -1
+        const rest = colonIndex === -1
             ? ''
             : operation.slice(colonIndex + 1);
 
-        ret.push({ name, value, expr: input.slice(start, end + suffix.length) });
+        const [value, ...options] = rest.split(';').map((s) => s.trim());
+
+        const item: IOperation = {
+            name,
+            value,
+            expr: input.slice(start, end + suffix.length),
+            options: {},
+        };
+
+        for (const opt of options) {
+
+            if (!opt.length) {
+                continue;
+            }
+
+            const assignIndex = opt.indexOf('=');
+
+            if (assignIndex === -1) {
+
+                item.options[opt] = true;
+            }
+            else {
+
+                const optName = opt.slice(0, assignIndex).trim();
+                const optValue = opt.slice(assignIndex + 1).trim();
+
+                item.options[optName] = optValue;
+            }
+        }
+
+        ret.push(item);
     }
 
     return ret;

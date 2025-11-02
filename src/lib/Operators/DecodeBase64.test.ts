@@ -20,7 +20,6 @@ import { DecodeBase64Operator } from './DecodeBase64';
 import * as cL from '../Constants';
 import type { IOperator } from '../Declaration';
 
-
 NodeTest.describe('Built-in Operator: DecodeBase64', () => {
 
     NodeTest.it('should provides only BLOCK mode', () => {
@@ -40,7 +39,7 @@ NodeTest.describe('Built-in Operator: DecodeBase64', () => {
         
         op.modes[cL.EOperatorMode.BLOCK]?.processSync('AAAABBBB', {
             output, outputEntry: 'test'
-        } as any);
+        } as any, {});
         NodeAssert.strictEqual(
             Buffer.from([0x00, 0x00, 0x00, 0x04, 0x10, 0x41]).equals(output.test),
             true
@@ -55,7 +54,7 @@ NodeTest.describe('Built-in Operator: DecodeBase64', () => {
         
         op.modes[cL.EOperatorMode.BLOCK]?.process('AAAABBBB', {
             output, outputEntry: 'test'
-        } as any);
+        } as any, {});
         NodeAssert.strictEqual(
             Buffer.from([0x00, 0x00, 0x00, 0x04, 0x10, 0x41]).equals(output.test),
             true

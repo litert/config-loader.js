@@ -15,6 +15,7 @@
  */
 
 import type * as dL from '../Declaration';
+export type { IDict } from '@litert/utils-ts-types';
 
 export interface IOperatorInfo {
 
@@ -22,5 +23,3 @@ export interface IOperatorInfo {
 
     entries: string[];
 }
-
-export type IDict<T = unknown, TKeys extends string | number = string | number> = Record<TKeys, T>;

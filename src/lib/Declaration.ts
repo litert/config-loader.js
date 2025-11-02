@@ -14,7 +14,23 @@
  *  limitations under the License.
  */
 
+import type * as dT from '@litert/utils-ts-types';
 import type { EOperatorMode, EContainerOperatorOrder } from './Constants';
+
+/**
+ * The additional options for operations.
+ *
+ * @example In the operation `$[[op:operand; option1; option2=value2]]`, the options are:
+ * ```json
+ * {
+ *   "option1": true,
+ *   "option2": "value2"
+ * }
+ * ```
+ *
+ * @since v1.1.0
+ */
+export type IOperationOptions = dT.IDict<string | boolean>;
 
 /**
  * The encoding decoder interface for config loader.
@@ -148,7 +164,7 @@ export interface IOperator {
      * This code could be overridden by the `overrideCode` option in `IAddOperatorOptions`
      * when adding the operator to the loader.
      */
-    code: string;
+    readonly code: string;
 
     /**
      * The code aliases of the operator, its format is the same as `code`.
@@ -158,33 +174,33 @@ export interface IOperator {
      *
      * Or add additional aliases to the operator by the `aliases` option in `IAddOperatorOptions`.
      */
-    aliases: string[];
+    readonly aliases: string[];
 
     /**
      * Where the operator should be used.
      */
-    modes: {
+    readonly modes: {
 
         /**
          * The operator object processes the operand when it's under inline mode.
          *
          * @optional
          */
-        [EOperatorMode.INLINE]?: IInlineOperator;
+        readonly [EOperatorMode.INLINE]?: IInlineOperator;
 
         /**
          * The operator object processes the operand when it's under block mode.
          *
          * @optional
          */
-        [EOperatorMode.BLOCK]?: IBlockOperator;
+        readonly [EOperatorMode.BLOCK]?: IBlockOperator;
 
         /**
          * The operator object processes the operand when it's under container mode.
          *
          * @optional
          */
-        [EOperatorMode.CONTAINER]?: IContainerOperator;
+        readonly [EOperatorMode.CONTAINER]?: IContainerOperator;
     };
 }
 
@@ -198,15 +214,28 @@ export interface IInlineOperator {
      *
      * @param operand The operand to be processed.
      * @param context The context in which the operator is being processed.
+     * @param options Additional options for processing the operator.
+     *
+     * @returns The result of processing the operand.
+     *
+     * @since v1.1.0: Added `options` parameter.
      */
-    process(operand: string, context: IOperatorContext): Promise<string> | string;
+    process(
+        operand: string,
+        context: IOperatorContext,
+        options: IOperationOptions,
+    ): Promise<string> | string;
 
     /**
      * The synchronous version of `process()`.
      *
      * @see {@link IInlineOperator.process}
      */
-    processSync(operand: string, context: IOperatorContext): string;
+    processSync(
+        operand: string,
+        context: IOperatorContext,
+        options: IOperationOptions,
+    ): string;
 }
 
 /**
@@ -221,15 +250,27 @@ export interface IBlockOperator {
      *
      * @param operand The operand to be processed.
      * @param context The context in which the operator is being processed.
+     * @param options Additional options for processing the operator.
+     *
+     * @returns void or a Promise that resolves when processing is complete.
+     * @since v1.1.0: Added `options` parameter.
      */
-    process(operand: string, context: IOperatorContext): Promise<void> | void;
+    process(
+        operand: string,
+        context: IOperatorContext,
+        options: IOperationOptions,
+    ): Promise<void> | void;
 
     /**
      * The synchronous version of `process()`.
      *
      * @see {@link IBlockOperator.process}
      */
-    processSync(operand: string, context: IOperatorContext): void;
+    processSync(
+        operand: string,
+        context: IOperatorContext,
+        options: IOperationOptions,
+    ): void;
 }
 
 /**
@@ -255,6 +296,13 @@ export interface IContainerOperatorArgs {
      * @example the `<value>` of the property in `{ "$[[op:operand]]": <value> }`.
      */
     value: unknown;
+
+    /**
+     * The options provided in the operation.
+     *
+     * @example the options in `$[[op:operand; option1; option2=value2]]`.
+     */
+    options: IOperationOptions;
 }
 
 /**

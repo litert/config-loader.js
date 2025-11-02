@@ -41,12 +41,12 @@ NodeTest.describe('Built-in Operator: EnvironmentVariable', () => {
         process.env.MY_TEST = '123';
 
         NodeAssert.strictEqual(
-            op.modes[cL.EOperatorMode.INLINE]?.process('MY_TEST', {} as any),
+            op.modes[cL.EOperatorMode.INLINE]?.process('MY_TEST', {} as any, {}),
             '123'
         );
 
         NodeAssert.strictEqual(
-            op.modes[cL.EOperatorMode.INLINE]?.processSync('MY_TEST', {} as any),
+            op.modes[cL.EOperatorMode.INLINE]?.processSync('MY_TEST', {} as any, {}),
             '123'
         );
     });
@@ -56,11 +56,11 @@ NodeTest.describe('Built-in Operator: EnvironmentVariable', () => {
         const op = new EnvironmentVariableOperator({});
 
         NodeAssert.throws(() => {
-            op.modes[cL.EOperatorMode.INLINE]?.process('MY_TEST_NOT_FOUND', {} as any)
+            op.modes[cL.EOperatorMode.INLINE]?.process('MY_TEST_NOT_FOUND', {} as any, {})
         });
 
         NodeAssert.throws(() => {
-            op.modes[cL.EOperatorMode.INLINE]?.processSync('MY_TEST_NOT_FOUND', {} as any)
+            op.modes[cL.EOperatorMode.INLINE]?.processSync('MY_TEST_NOT_FOUND', {} as any, {})
         });
     });
 
@@ -71,12 +71,12 @@ NodeTest.describe('Built-in Operator: EnvironmentVariable', () => {
         });
 
         NodeAssert.strictEqual(
-            op.modes[cL.EOperatorMode.INLINE]?.process('MY_TEST_NOT_FOUND', {} as any),
+            op.modes[cL.EOperatorMode.INLINE]?.process('MY_TEST_NOT_FOUND', {} as any, {}),
             ''
         );
 
         NodeAssert.strictEqual(
-            op.modes[cL.EOperatorMode.INLINE]?.processSync('MY_TEST_NOT_FOUND', {} as any),
+            op.modes[cL.EOperatorMode.INLINE]?.processSync('MY_TEST_NOT_FOUND', {} as any, {}),
             ''
         );
     });

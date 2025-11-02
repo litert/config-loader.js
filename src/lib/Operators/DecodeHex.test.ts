@@ -40,7 +40,7 @@ NodeTest.describe('Built-in Operator: DecodeHex', () => {
         
         op.modes[cL.EOperatorMode.BLOCK]?.processSync('12345678', {
             output, outputEntry: 'test'
-        } as any);
+        } as any, {});
         NodeAssert.strictEqual(
             Buffer.from([0x12, 0x34, 0x56, 0x78]).equals(output.test),
             true
@@ -55,7 +55,7 @@ NodeTest.describe('Built-in Operator: DecodeHex', () => {
         
         op.modes[cL.EOperatorMode.BLOCK]?.process('12345678', {
             output, outputEntry: 'test'
-        } as any);
+        } as any, {});
         NodeAssert.strictEqual(
             Buffer.from([0x12, 0x34, 0x56, 0x78]).equals(output.test),
             true

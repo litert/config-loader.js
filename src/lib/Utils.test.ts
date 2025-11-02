@@ -1,3 +1,19 @@
+/**
+ * Copyright 2025 Angus.Fenying <fenying@litert.org>
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 import * as NodeTest from 'node:test';
 import * as NodeAssert from 'node:assert';
 import * as _ from './Utils';
@@ -37,7 +53,8 @@ NodeTest.describe('Function Utils.parseOperation', () => {
         const expected = [{
             expr: input,
             name: 'hello',
-            value: 'world'
+            value: 'world',
+            options: {},
         }];
 
         NodeAssert.deepStrictEqual(_.parseOperation(input, '{{', '}}'), expected);
@@ -49,7 +66,8 @@ NodeTest.describe('Function Utils.parseOperation', () => {
         const expected = [{
             expr: input,
             name: 'hello',
-            value: ''
+            value: '',
+            options: {},
         }];
 
         NodeAssert.deepStrictEqual(_.parseOperation(input, '{{', '}}'), expected);
@@ -61,7 +79,8 @@ NodeTest.describe('Function Utils.parseOperation', () => {
         const expected = [{
             expr: input,
             name: 'hello',
-            value: ''
+            value: '',
+            options: {},
         }];
 
         NodeAssert.deepStrictEqual(_.parseOperation(input, '{{', '}}'), expected);
@@ -73,7 +92,8 @@ NodeTest.describe('Function Utils.parseOperation', () => {
         const expected = [{
             expr: input,
             name: 'hello',
-            value: 'wOrLd'
+            value: 'wOrLd',
+            options: {},
         }];
 
         NodeAssert.deepStrictEqual(_.parseOperation(input, '{{', '}}'), expected);
@@ -91,9 +111,9 @@ NodeTest.describe('Function Utils.parseOperation', () => {
         const input = '{{a:b}}{{decode-test}} {{invalid{{}} {{d:e:f}}';
 
         NodeAssert.deepStrictEqual(_.parseOperation(input, '{{', '}}'), [
-            { expr: '{{a:b}}', name: 'a', value: 'b' },
-            { expr: '{{decode-test}}', name: 'decode-test', value: '' },
-            { expr: '{{d:e:f}}', name: 'd', value: 'e:f' }
+            { expr: '{{a:b}}', name: 'a', value: 'b', options: {}, },
+            { expr: '{{decode-test}}', name: 'decode-test', value: '', options: {}, },
+            { expr: '{{d:e:f}}', name: 'd', value: 'e:f', options: {},  }
         ]);
     });
 });
@@ -116,7 +136,7 @@ NodeTest.describe('Function Utils.parseContainerOperation', () => {
     NodeTest.it(`return the operation if it is a valid container operation`, () => {
         NodeAssert.deepStrictEqual(
             _.parseContainerOperation('{{hello:world}}', '{{', '}}'),
-            { expr: '{{hello:world}}', name: 'hello', value: 'world' },
+            { expr: '{{hello:world}}', name: 'hello', value: 'world', options: {}, },
         );
     });
 });
