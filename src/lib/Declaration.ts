@@ -99,6 +99,9 @@ export interface IDataReader {
     resolvePath(refFile: string, filePath: string): string;
 }
 
+/**
+ * The interface type of the context passed to operators by the loader.
+ */
 export interface IOperatorContext {
 
     /**
@@ -151,6 +154,9 @@ export interface IOperatorContext {
     inputData: IVessel;
 }
 
+/**
+ * The interface type for config loader operators.
+ */
 export interface IOperator {
 
     /**
@@ -301,6 +307,8 @@ export interface IContainerOperatorArgs {
      * The options provided in the operation.
      *
      * @example the options in `$[[op:operand; option1; option2=value2]]`.
+     *
+     * @since v1.1.0
      */
     options: IOperationOptions;
 }
