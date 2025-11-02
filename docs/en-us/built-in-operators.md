@@ -40,11 +40,24 @@ loader.addOperators(new BuiltInOps.DecodeHexOperator());
 
 This operator reads the value of an environment variable.
 
+#### Operation Options
+
+- `default`
+
+    Specifies the default value to return if all the given environment variables
+    are not set.
+
+    ```yaml
+    demoEnv: $[[env:VAR1,VAR2,VAR3; default=123]]
+    ```
+
 #### Example
 
 ```yml
 # file: /data/a/b/config.yml
-demoEnv: $[[env:MY_ENV_VAR]]
+demoEnv: "$[[env: MY_ENV_VAR ]]"
+demoEnv2: "$[[env: MY_ENV_VAR1, MY_ENV_VAR2, MY_ENV_VAR3 ]]"
+demoEnv3: "$[[env: ENV_NOT_SET; default = hello world]]"
 ```
 Result:
 
@@ -52,7 +65,7 @@ Result:
 { "demoEnv": process.env.MY_ENV_VAR }
 ```
 
-#### Options
+#### Configuration
 
 ```ts
 interface IEnvironmentVariableOperatorOptions {

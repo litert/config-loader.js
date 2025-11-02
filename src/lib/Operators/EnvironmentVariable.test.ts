@@ -19,6 +19,7 @@ import * as NodeAssert from 'node:assert';
 import { EnvironmentVariableOperator } from './EnvironmentVariable';
 import * as cL from '../Constants';
 import type { IOperator } from '../Declaration';
+import type { IDict } from '../_internal/Decl';
 
 
 NodeTest.describe('Built-in Operator: EnvironmentVariable', () => {
@@ -48,6 +49,151 @@ NodeTest.describe('Built-in Operator: EnvironmentVariable', () => {
         NodeAssert.strictEqual(
             op.modes[cL.EOperatorMode.INLINE]?.processSync('MY_TEST', {} as any, {}),
             '123'
+        );
+    });
+
+    NodeTest.it('should read env value from the given readEnv callback', () => {
+
+        const opWithoutDefault = new EnvironmentVariableOperator({
+            readEnv: (name: string) => {
+                switch (name) {
+                    case 'MY_TEST':
+                        return '2333';
+                    default:
+                        return null;
+                }
+            }
+        });
+
+        process.env.MY_TEST = '123';
+
+        NodeAssert.strictEqual(
+            opWithoutDefault.modes[cL.EOperatorMode.INLINE]?.process('MY_TEST', {} as any, {}),
+            '2333'
+        );
+
+        NodeAssert.strictEqual(
+            opWithoutDefault.modes[cL.EOperatorMode.INLINE]?.processSync('MY_TEST', {} as any, {}),
+            '2333'
+        );
+
+        NodeAssert.throws(() => {
+            opWithoutDefault.modes[cL.EOperatorMode.INLINE]?.process('MY_TEST_NOT_FOUND', {} as any, {})
+        });
+
+        const opWithDefault = new EnvironmentVariableOperator({
+            readEnv: (name: string) => {
+                switch (name) {
+                    case 'MY_TEST':
+                        return '666';
+                    default:
+                        return null;
+                }
+            },
+            defaultValue: 'NOT_FOUND'
+        });
+
+        NodeAssert.strictEqual(
+            opWithDefault.modes[cL.EOperatorMode.INLINE]?.process('MY_TEST', {} as any, {}),
+            '666'
+        );
+
+        NodeAssert.strictEqual(
+            opWithDefault.modes[cL.EOperatorMode.INLINE]?.processSync('MY_TEST', {} as any, {}),
+            '666'
+        );
+
+        NodeAssert.strictEqual(
+            opWithDefault.modes[cL.EOperatorMode.INLINE]?.process('MY_TEST_NOT_FOUND', {} as any, {}),
+            'NOT_FOUND'
+        );
+
+        NodeAssert.strictEqual(
+            opWithDefault.modes[cL.EOperatorMode.INLINE]?.processSync('MY_TEST_NOT_FOUND', {} as any, {}),
+            'NOT_FOUND'
+        );
+    });
+
+    NodeTest.it('should read from multiple env vars by order', () => {
+
+        const envVars: IDict<string> = {
+            'VAR1': 'value1',
+            'VAR2': 'value2',
+            'VAR3': 'value3',
+        };
+        const op = new EnvironmentVariableOperator({
+            readEnv: (name: string) => envVars[name] ?? null,
+        });
+
+        NodeAssert.strictEqual(
+            op.modes[cL.EOperatorMode.INLINE]!.process('VAR2', {} as any, {}),
+            'value2'
+        );
+
+        NodeAssert.strictEqual(
+            op.modes[cL.EOperatorMode.INLINE]!.process('VAR4,VAR2', {} as any, {}),
+            'value2'
+        );
+
+        NodeAssert.strictEqual(
+            op.modes[cL.EOperatorMode.INLINE]!.process('VAR3,VAR2', {} as any, {}),
+            'value3'
+        );
+
+        NodeAssert.strictEqual(
+            op.modes[cL.EOperatorMode.INLINE]!.process(' VAR3 , VAR2 ', {} as any, {}),
+            'value3'
+        );
+
+        NodeAssert.strictEqual(
+            op.modes[cL.EOperatorMode.INLINE]!.process(' VAR4 , VAR2 ', {} as any, {}),
+            'value2'
+        );
+
+        NodeAssert.throws(
+            () => op.modes[cL.EOperatorMode.INLINE]!.process('VAR4,VAR5', {} as any, {}),
+        );
+    });
+
+    NodeTest.it('should use explicit default value if provided', () => {
+
+        const envVars: IDict<string> = {
+            'VAR1': 'value1',
+            'VAR2': 'value2',
+            'VAR3': 'value3',
+        };
+        const op = new EnvironmentVariableOperator({
+            readEnv: (name: string) => envVars[name] ?? null,
+        });
+
+        NodeAssert.throws(
+            () => op.modes[cL.EOperatorMode.INLINE]!.process('VAR4,VAR5', {} as any, {}),
+        );
+        NodeAssert.strictEqual(
+            op.modes[cL.EOperatorMode.INLINE]!.process('VAR4,VAR5', {} as any, { default: '' }),
+            ''
+        );
+        NodeAssert.strictEqual(
+            op.modes[cL.EOperatorMode.INLINE]!.process('VAR4,VAR5', {} as any, {
+                default: '123'
+            }),
+            '123'
+        );
+        NodeAssert.strictEqual(
+            op.modes[cL.EOperatorMode.INLINE]!.process('VAR4,VAR5', {} as any, {
+                'default': 'default=123'
+            }),
+            'default=123'
+        );
+        NodeAssert.strictEqual(
+            op.modes[cL.EOperatorMode.INLINE]!.process('VAR4,VAR5,VAR2', {} as any, {
+                default: 'should not be used'
+            }),
+            'value2'
+        );
+        NodeAssert.strictEqual(
+            op.modes[cL.EOperatorMode.INLINE]!.process(' VAR4,VAR5,VAR1', {} as any, {}),
+            'value1'
         );
     });
 

@@ -23,6 +23,49 @@
 
     Click to read more about [Operation Options](./docs/en-us/operation-options.md).
 
+- feat(operator): [EnvironmentVariable] added readEnv option
+
+    A new optional parameter `readEnv` is added to the `EnvironmentVariable`
+    operator options, which allows users to provide a custom function to read
+    environment variables. This is useful in scenarios where environment
+    variables are read from an alternative source other than the default
+    `process.env`.
+
+- feat(operator): [EnvironmentVariable] added multiple variable names chaining support
+
+    The `EnvironmentVariable` operator now supports specifying multiple
+    environment variable names separated by commas. The operator will check
+    each variable in order and use the value of the first one that is defined.
+    For example:
+
+    ```yaml
+    database:
+      host: "$[[env:DB_HOSTNAME,DB_HOST]]"
+    ```
+
+- feat(operator): [EnvironmentVariable] space character are now allowed between variable names
+
+    The `EnvironmentVariable` operator now allows space characters between
+    variable names when specifying multiple environment variables. This
+    improves readability without affecting functionality.
+
+    ```yaml
+    database:
+      host: "$[[env: DB_HOSTNAME , DB_HOST ]]"
+    ```
+
+- feat(operator): [EnvironmentVariable] added explicit default value support
+
+    The `EnvironmentVariable` operator now allows users to specify an explicit
+    default value using the syntax `"$[[env:<variable-names>:<default-value>]]"`
+    in the config. If none of the specified environment variables are found,
+    the explicitly provided default value will be used.
+
+    ```yaml
+    database:
+      host: "$[[env: DB_HOSTNAME , DB_HOST ; default = localhost]]"
+    ```
+
 ## v1.0.1
 
 - fix(loader): should not overwrite object by object in context output.
