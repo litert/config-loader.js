@@ -93,52 +93,50 @@ export class AsyncConfigLoader extends AbstractLoader {
 
         const opList = _.parseOperation(str, this._opPrefix, this._opSuffix);
 
-        let ret: unknown = str;
+        if (!opList.length) {
 
-        if (opList.length !== 0) {
-
-            const onlyInline = opList[0].expr !== str; // not "$[[op]]" or "$[[op:val]]"
-
-            if (onlyInline) {
-
-                ret = await this._processInlineString(opList, str, ctx);
-            }
-            else {
-
-                const op = opList[0];
-                const operator = this._getOperator(op);
-
-                const blockOp = operator.modes[cL.EOperatorMode.BLOCK];
-                const inlineOp = operator.modes[cL.EOperatorMode.INLINE];
-
-                if (blockOp) {
-
-                    await blockOp.process(op.value ?? '', ctx, op.options);
-                    return;
-                }
-
-                if (inlineOp) {
-
-                    ret = await inlineOp.process(op.value ?? '', ctx, op.options);
-                }
-                else {
-
-                    throw new eL.E_OPERATOR_MODE_MISMATCH({
-                        code: op.name,
-                        expected: 'block or inline',
-                    });
-                }
-            }
+            this._writeOutput(ctx, str);
+            return;
         }
 
-        if (Array.isArray(ctx.output)) {
+        const onlyInline = opList[0].expr !== str; // not "$[[op]]" or "$[[op:val]]"
 
-            ctx.output.push(ret);
-        }
-        else {
+        if (onlyInline) {
 
-            (ctx.output as iL.IDict)[ctx.outputEntry] = ret;
+            this._writeOutput(ctx, await this._processInlineString(opList, str, ctx));
+            return;
         }
+
+        const op = opList[0];
+        const operator = this._getOperator(op);
+
+        if (!operator) {
+
+            this._writeOutput(ctx, str);
+
+            return;
+        }
+
+        const blockOp = operator.modes[cL.EOperatorMode.BLOCK];
+
+        if (blockOp) {
+
+            await blockOp.process(op.value ?? '', ctx, op.options);
+            return;
+        }
+
+        const inlineOp = operator.modes[cL.EOperatorMode.INLINE];
+
+        if (inlineOp) {
+
+            this._writeOutput(ctx, await inlineOp.process(op.value ?? '', ctx, op.options));
+            return;
+        }
+
+        throw new eL.E_OPERATOR_MODE_MISMATCH({
+            code: op.name,
+            expected: 'block or inline',
+        });
     }
 
     private async _processInlineString(
@@ -150,6 +148,12 @@ export class AsyncConfigLoader extends AbstractLoader {
         for (const op of opList) {
 
             const operator = this._getOperator(op);
+
+            if (!operator) {
+
+                // keep original expression if operator not found
+                continue;
+            }
 
             const inlineOp = operator.modes[cL.EOperatorMode.INLINE];
 

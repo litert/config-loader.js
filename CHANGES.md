@@ -1,5 +1,16 @@
 # Changes Logs
 
+## v1.1.1
+
+- feat(loader): added `skipUnknownOperators` option
+
+    A new loader option `skipUnknownOperators` has been added to allow users
+    to skip unknown operators during the loading process. When this option is
+    set to `true`, any operator that is not recognized will be ignored, and
+    its original value will be retained in the output. This is useful in
+    scenarios where the configuration may contain custom or unsupported
+    operators that should not cause loading failures.
+
 ## v1.1.0
 
 - feat(loader): added operation options supports

@@ -17,8 +17,6 @@
 export { regexpEscape } from '@litert/utils-string';
 export { deepMerge } from '@litert/utils-object';
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 export interface IOperation {
 
     expr: string;

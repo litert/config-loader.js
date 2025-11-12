@@ -62,14 +62,25 @@ export interface ILoaderOptions {
     operators?: Array<dL.IOperator | IOperatorRegistration>;
 
     /**
+     * The prefix of operator expression.
+     *
      * @default '$[['
      */
     opPrefix?: string;
 
     /**
+     * The suffix of operator expression.
+     *
      * @default ']]'
      */
     opSuffix?: string;
+
+    /**
+     * Whether to skip unknown operators and retain the original expression.
+     *
+     * @default false
+     */
+    skipUnknownOperators?: boolean;
 }
 
 /**
@@ -108,6 +119,7 @@ export class ConfigLoader implements dL.ILoader {
             opts.reader,
             this._operators,
             this._encodings,
+            opts.skipUnknownOperators ?? false,
         );
 
         this._asyncLoader = new AsyncConfigLoader(
@@ -116,6 +128,7 @@ export class ConfigLoader implements dL.ILoader {
             opts.reader,
             this._operators,
             this._encodings,
+            opts.skipUnknownOperators ?? false,
         );
 
         this.reader = opts.reader;

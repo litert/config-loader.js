@@ -4,3 +4,6 @@ g: null
 h: false
 i: true
 k: $[[hex:123456ffaabb]]
+unk: $[[unknown:some value; option1=val1; option2=val2]]
+$[[unknown2]]: 123
+$[[unknown3:another value]]: true

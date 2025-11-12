@@ -41,25 +41,45 @@ export abstract class AbstractLoader {
 
     protected readonly _encodings: iL.IDict<dL.IEncoding> = {};
 
+    protected readonly _skipUnknownOperators: boolean;
+
     public constructor(
         opPrefix: string,
         opSuffix: string,
         reader: dL.IDataReader,
         operators: iL.IDict<iL.IOperatorInfo>,
         encodings: iL.IDict<dL.IEncoding>,
+        skipUnknownOperators: boolean,
     ) {
         this._opPrefix = opPrefix;
         this._opSuffix = opSuffix;
         this._reader = reader;
         this._operators = operators;
         this._encodings = encodings;
+        this._skipUnknownOperators = skipUnknownOperators;
     }
 
-    protected _getOperator(op: _.IOperation): dL.IOperator {
+    protected _writeOutput(ctx: dL.IOperatorContext, ret: unknown): void {
+
+        if (Array.isArray(ctx.output)) {
+
+            ctx.output.push(ret);
+        }
+        else {
+
+            (ctx.output as iL.IDict)[ctx.outputEntry] = ret;
+        }
+    }
+
+    protected _getOperator(op: _.IOperation): dL.IOperator | null {
 
         const operator = this._operators[op.name]?.operator;
 
         if (!operator) {
+
+            if (this._skipUnknownOperators) {
+                return null;
+            }
 
             throw new eL.E_OPERATOR_NOT_FOUND({ code: op.name });
         }
@@ -94,6 +114,10 @@ export abstract class AbstractLoader {
             const opInfo = this._operators[op.name];
 
             if (!opInfo) {
+
+                if (this._skipUnknownOperators) {
+                    continue;
+                }
 
                 throw new eL.E_OPERATOR_NOT_FOUND({ code: op.name });
             }

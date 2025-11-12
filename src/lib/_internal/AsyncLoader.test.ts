@@ -125,7 +125,7 @@ class MockReader implements dL.IDataReader {
     }
 }
 
-function createMockLoader(): [AsyncConfigLoader, MockReader] {
+function createMockLoader(skipUnknown: boolean = false): [AsyncConfigLoader, MockReader] {
 
     const reader = new MockReader();
     const loader = new AsyncConfigLoader(
@@ -140,7 +140,8 @@ function createMockLoader(): [AsyncConfigLoader, MockReader] {
         },
         {
             'json': new JsonEncoding(),
-        }
+        },
+        skipUnknown,
     );
 
     return [loader, reader];
@@ -348,6 +349,43 @@ NodeTest.describe('AsyncConfigLoader', async () => {
             },
             '/test.json',
             { a: { test: 'container:hello-"123"-{"a":"123","d":"12333","e":true}', } }
+        );
+    });
+
+    await NodeTest.it('should skip unknown operators and retain original expression', async () => {
+
+        const [loader, reader] = createMockLoader(true);
+
+        await doTest(
+            loader, reader,
+            {
+                '/test.json': {
+                    encoding: 'json',
+                    content: Buffer.from(JSON.stringify({
+                        'a': {
+                            '$[[unknown:hello]]': null,
+                            '$[[unknown:op]]': 'value',
+                            'b': '$[[unknown2:op2;a=1]]',
+                            'c': [
+                                '$[[unknown:hello]]',
+                                '$[[unknown3:op3]]',
+                            ]
+                        },
+                    })),
+                },
+            },
+            '/test.json',
+            { 
+                'a': {
+                    '$[[unknown:hello]]': null,
+                    '$[[unknown:op]]': 'value',
+                    'b': '$[[unknown2:op2;a=1]]',
+                    'c': [
+                        '$[[unknown:hello]]',
+                        '$[[unknown3:op3]]',
+                    ]
+                },
+            }
         );
     });
 });

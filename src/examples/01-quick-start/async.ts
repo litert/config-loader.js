@@ -20,15 +20,16 @@ import * as BuiltInOps from '../../lib/Operators';
 import { LocalFileReader } from '../../lib/Readers/LocalFileReader';
 
 const loader = new ConfigLoader.ConfigLoader({
-    reader: new LocalFileReader({
-        encodings: {
+    'reader': new LocalFileReader({
+        'encodings': {
             '.json': 'json',
             '.yaml': 'yaml',
             '.yml': 'yaml',
         }
     }),
-    encodings: BuiltInEnc.getAllBuiltInEncodings(),
-    operators: BuiltInOps.getAllBuiltInOperators(),
+    'encodings': BuiltInEnc.getAllBuiltInEncodings(),
+    'operators': BuiltInOps.getAllBuiltInOperators(),
+    'skipUnknownOperators': true,
 });
 
 process.env.TEST_ABC = '123';
