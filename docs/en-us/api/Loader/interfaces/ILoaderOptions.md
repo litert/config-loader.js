@@ -36,7 +36,9 @@ The operators to be registered in the loader.
 
 > `optional` **opPrefix**: `string`
 
-Defined in: [src/lib/Loader.ts:67](https://github.com/litert/config-loader.js/blob/master/src/lib/Loader.ts#L67)
+Defined in: [src/lib/Loader.ts:69](https://github.com/litert/config-loader.js/blob/master/src/lib/Loader.ts#L69)
+
+The prefix of operator expression.
 
 #### Default
 
@@ -50,7 +52,9 @@ Defined in: [src/lib/Loader.ts:67](https://github.com/litert/config-loader.js/bl
 
 > `optional` **opSuffix**: `string`
 
-Defined in: [src/lib/Loader.ts:72](https://github.com/litert/config-loader.js/blob/master/src/lib/Loader.ts#L72)
+Defined in: [src/lib/Loader.ts:76](https://github.com/litert/config-loader.js/blob/master/src/lib/Loader.ts#L76)
+
+The suffix of operator expression.
 
 #### Default
 
@@ -67,3 +71,19 @@ Defined in: [src/lib/Loader.ts:72](https://github.com/litert/config-loader.js/bl
 Defined in: [src/lib/Loader.ts:52](https://github.com/litert/config-loader.js/blob/master/src/lib/Loader.ts#L52)
 
 The data reader to be used by the loader.
+
+***
+
+### skipUnknownOperators?
+
+> `optional` **skipUnknownOperators**: `boolean`
+
+Defined in: [src/lib/Loader.ts:83](https://github.com/litert/config-loader.js/blob/master/src/lib/Loader.ts#L83)
+
+Whether to skip unknown operators and retain the original expression.
+
+#### Default
+
+```ts
+false
+```
