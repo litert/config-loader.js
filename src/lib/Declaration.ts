@@ -424,4 +424,20 @@ export interface ILoader {
      * @see {@link ILoader.load}
      */
     loadSync(path: string, parent?: string): unknown;
+
+    /**
+     * Load configuration data from the given object.
+     *
+     * @param data   The object containing the configuration data.
+     * @param path   The path of the configuration (file) to be loaded.
+     * @param parent The path of the parent configuration (file) that is loading this configuration.
+     */
+    loadFromObject(data: dT.IDict, path: string, parent?: string): Promise<unknown>;
+
+    /**
+     * The synchronous version of `loadFromObject()`.
+     *
+     * @see {@link ILoader.loadFromObject}
+     */
+    loadFromObjectSync(data: dT.IDict, path: string, parent?: string): unknown;
 }

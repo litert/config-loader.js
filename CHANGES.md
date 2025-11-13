@@ -3,6 +3,14 @@
 ## v1.2.0
 
 - fix(loader): correctly use `parent` parameter when loading files
+- feat(loader): added `loadFromObject` and `loadFromObjectSync` methods
+
+    New methods `loadFromObject` and `loadFromObjectSync` have been added to
+    the `ConfigLoader` class to allow loading configuration data directly
+    from in-memory objects. These methods accept an object containing the
+    configuration data and an optional file path for context. This feature is
+    useful for scenarios where configuration data is generated or modified at
+    runtime, eliminating the need to read from external files.
 
 ## v1.1.1
 

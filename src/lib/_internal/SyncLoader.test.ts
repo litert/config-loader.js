@@ -162,6 +162,32 @@ function doTest(
 
 NodeTest.describe('SyncConfigLoader', () => {
 
+    NodeTest.it('should able to load from an parsed object', () => {
+
+        const [loader] = createMockLoader(true);
+
+        NodeAssert.deepStrictEqual(
+            loader.loadFromObject(null as any, {
+                a: 123,
+                b: 'fff',
+                c: [1, 2, '$[[demo:hello;opt=val]]'],
+                d: {
+                    e: 'a-$[[demo:world;foo=bar]]',
+                },
+                f: '$[[unknown:op]]',
+            }, '/test.json'),
+            {
+                a: 123,
+                b: 'fff',
+                c: [1, 2, 'block:hello-{"opt":"val"}'],
+                d: {
+                    e: 'a-inline:world-{"foo":"bar"}',
+                },
+                f: '$[[unknown:op]]',
+            }
+        )
+    });
+
     NodeTest.it('should pass inline-mode operator options correctly', () => {
 
         const [loader, reader] = createMockLoader();

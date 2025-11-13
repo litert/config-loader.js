@@ -10,3 +10,4 @@
 - [Custom Readers](./custom-readers.md)
 - [Custom Encodings](./custom-encodings.md)
 - [Custom Syntax](./custom-syntax.md)
+- [Load From Object](./load-from-object.md)

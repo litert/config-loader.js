@@ -227,4 +227,22 @@ export class ConfigLoader implements dL.ILoader {
 
         return this._syncLoader.load(filePath, this, parent);
     }
+
+    public async loadFromObject(
+        data: iL.IDict,
+        filePath: string,
+        parent?: string,
+    ): Promise<unknown> {
+
+        return this._asyncLoader.loadFromObject(this, data, filePath, parent);
+    }
+
+    public loadFromObjectSync(
+        data: iL.IDict,
+        filePath: string,
+        parent?: string,
+    ): unknown {
+
+        return this._syncLoader.loadFromObject(this, data, filePath, parent);
+    }
 }

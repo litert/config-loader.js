@@ -23,34 +23,12 @@ import { AbstractLoader } from './AbstractLoader';
 
 export class AsyncConfigLoader extends AbstractLoader {
 
-    public async load(filePath: string, loader: dL.ILoader, parent?: string): Promise<unknown> {
-
-        if (!this._reader.read) {
-
-            throw new eL.E_READER_NOT_SUPPORT_ASYNC();
-        }
-
-        filePath = this._reader.resolvePath(parent ?? '.', filePath);
-
-        const { encoding, content } = await this._reader.read(filePath);
-
-        const enc = this._encodings[encoding ?? ''];
-
-        if (!enc) {
-
-            throw new eL.E_ENCODING_NOT_FOUND({ encoding });
-        }
-
-        let input: iL.IDict;
-
-        try {
-
-            input = enc.decode(content) as iL.IDict;
-        }
-        catch (err: unknown) {
-
-            throw new eL.E_DECODING_FAILED({ encoding, filePath }, err);
-        }
+    public async loadFromObject(
+        loader: dL.ILoader,
+        input: iL.IDict,
+        filePath: string,
+        parent?: string,
+    ): Promise<unknown> {
 
         if (Array.isArray(input)) {
 
@@ -87,6 +65,38 @@ export class AsyncConfigLoader extends AbstractLoader {
         }
 
         throw new eL.E_INVALID_CONFIG({ filePath });
+    }
+
+    public async load(filePath: string, loader: dL.ILoader, parent?: string): Promise<unknown> {
+
+        if (!this._reader.read) {
+
+            throw new eL.E_READER_NOT_SUPPORT_ASYNC();
+        }
+
+        filePath = this._reader.resolvePath(parent ?? '.', filePath);
+
+        const { encoding, content } = await this._reader.read(filePath);
+
+        const enc = this._encodings[encoding ?? ''];
+
+        if (!enc) {
+
+            throw new eL.E_ENCODING_NOT_FOUND({ encoding });
+        }
+
+        let input: iL.IDict;
+
+        try {
+
+            input = enc.decode(content) as iL.IDict;
+        }
+        catch (err: unknown) {
+
+            throw new eL.E_DECODING_FAILED({ encoding, filePath }, err);
+        }
+
+        return this.loadFromObject(loader, input, filePath, parent);
     }
 
     private async _processString(str: string, ctx: dL.IOperatorContext): Promise<void> {

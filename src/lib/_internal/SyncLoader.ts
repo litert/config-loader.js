@@ -23,34 +23,12 @@ import { AbstractLoader } from './AbstractLoader';
 
 export class SyncConfigLoader extends AbstractLoader {
 
-    public load(filePath: string, loader: dL.ILoader, parent?: string): unknown {
-
-        if (!this._reader.readSync) {
-
-            throw new eL.E_READER_NOT_SUPPORT_SYNC();
-        }
-
-        filePath = this._reader.resolvePath(parent ?? '.', filePath);
-
-        const { encoding, content } = this._reader.readSync(filePath);
-
-        const enc = this._encodings[encoding ?? ''];
-
-        if (!enc) {
-
-            throw new eL.E_ENCODING_NOT_FOUND({ encoding });
-        }
-
-        let input: iL.IDict;
-
-        try {
-
-            input = enc.decode(content) as iL.IDict;
-        }
-        catch (err: unknown) {
-
-            throw new eL.E_DECODING_FAILED({ encoding, filePath }, err);
-        }
+    public loadFromObject(
+        loader: dL.ILoader,
+        input: iL.IDict,
+        filePath: string,
+        parent?: string,
+    ): unknown {
 
         if (Array.isArray(input)) {
 
@@ -87,6 +65,38 @@ export class SyncConfigLoader extends AbstractLoader {
         }
 
         throw new eL.E_INVALID_CONFIG({ filePath });
+    }
+
+    public load(filePath: string, loader: dL.ILoader, parent?: string): unknown {
+
+        if (!this._reader.readSync) {
+
+            throw new eL.E_READER_NOT_SUPPORT_SYNC();
+        }
+
+        filePath = this._reader.resolvePath(parent ?? '.', filePath);
+
+        const { encoding, content } = this._reader.readSync(filePath);
+
+        const enc = this._encodings[encoding ?? ''];
+
+        if (!enc) {
+
+            throw new eL.E_ENCODING_NOT_FOUND({ encoding });
+        }
+
+        let input: iL.IDict;
+
+        try {
+
+            input = enc.decode(content) as iL.IDict;
+        }
+        catch (err: unknown) {
+
+            throw new eL.E_DECODING_FAILED({ encoding, filePath }, err);
+        }
+
+        return this.loadFromObject(loader, input, filePath, parent);
     }
 
     private _processString(str: string, ctx: dL.IOperatorContext): void {

@@ -164,6 +164,32 @@ async function doTest(
 
 NodeTest.describe('AsyncConfigLoader', async () => {
 
+    await NodeTest.it('should able to load from an parsed object', async () => {
+
+        const [loader] = createMockLoader(true);
+
+        NodeAssert.deepStrictEqual(
+            await loader.loadFromObject(null as any, {
+                a: 123,
+                b: 'fff',
+                c: [1, 2, '$[[demo:hello;opt=val]]'],
+                d: {
+                    e: 'a-$[[demo:world;foo=bar]]',
+                },
+                f: '$[[unknown:op]]',
+            }, '/test.json'),
+            {
+                a: 123,
+                b: 'fff',
+                c: [1, 2, 'block:hello-{"opt":"val"}'],
+                d: {
+                    e: 'a-inline:world-{"foo":"bar"}',
+                },
+                f: '$[[unknown:op]]',
+            }
+        )
+    });
+
     await NodeTest.it('should pass inline-mode operator options correctly', async () => {
 
         const [loader, reader] = createMockLoader();
