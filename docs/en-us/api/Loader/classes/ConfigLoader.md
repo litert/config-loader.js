@@ -162,7 +162,7 @@ Check if the loader has the given operator registered.
 
 ### load()
 
-> **load**(`filePath`): `Promise`\<`unknown`\>
+> **load**(`filePath`, `parent?`): `Promise`\<`unknown`\>
 
 Defined in: [src/lib/Loader.ts:221](https://github.com/litert/config-loader.js/blob/master/src/lib/Loader.ts#L221)
 
@@ -174,6 +174,12 @@ Load a configuration (file) from the given path.
 
 `string`
 
+##### parent?
+
+`string`
+
+The path of the parent configuration (file) that is loading this configuration.
+
 #### Returns
 
 `Promise`\<`unknown`\>
@@ -184,9 +190,81 @@ Load a configuration (file) from the given path.
 
 ***
 
+### loadFromObject()
+
+> **loadFromObject**(`data`, `filePath`, `parent?`): `Promise`\<`unknown`\>
+
+Defined in: [src/lib/Loader.ts:231](https://github.com/litert/config-loader.js/blob/master/src/lib/Loader.ts#L231)
+
+Load configuration data from the given object.
+
+#### Parameters
+
+##### data
+
+`iL.IDict`
+
+The object containing the configuration data.
+
+##### filePath
+
+`string`
+
+##### parent?
+
+`string`
+
+The path of the parent configuration (file) that is loading this configuration.
+
+#### Returns
+
+`Promise`\<`unknown`\>
+
+#### Implementation of
+
+[`ILoader`](../../Declaration/interfaces/ILoader.md).[`loadFromObject`](../../Declaration/interfaces/ILoader.md#loadfromobject)
+
+***
+
+### loadFromObjectSync()
+
+> **loadFromObjectSync**(`data`, `filePath`, `parent?`): `unknown`
+
+Defined in: [src/lib/Loader.ts:240](https://github.com/litert/config-loader.js/blob/master/src/lib/Loader.ts#L240)
+
+The synchronous version of `loadFromObject()`.
+
+#### Parameters
+
+##### data
+
+`iL.IDict`
+
+##### filePath
+
+`string`
+
+##### parent?
+
+`string`
+
+#### Returns
+
+`unknown`
+
+#### See
+
+[ILoader.loadFromObject](../../Declaration/interfaces/ILoader.md#loadfromobject)
+
+#### Implementation of
+
+[`ILoader`](../../Declaration/interfaces/ILoader.md).[`loadFromObjectSync`](../../Declaration/interfaces/ILoader.md#loadfromobjectsync)
+
+***
+
 ### loadSync()
 
-> **loadSync**(`filePath`): `unknown`
+> **loadSync**(`filePath`, `parent?`): `unknown`
 
 Defined in: [src/lib/Loader.ts:226](https://github.com/litert/config-loader.js/blob/master/src/lib/Loader.ts#L226)
 
@@ -195,6 +273,10 @@ The synchronous version of `load()`.
 #### Parameters
 
 ##### filePath
+
+`string`
+
+##### parent?
 
 `string`
 

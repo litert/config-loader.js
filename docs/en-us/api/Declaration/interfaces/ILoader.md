@@ -142,6 +142,72 @@ The path of the parent configuration (file) that is loading this configuration.
 
 ***
 
+### loadFromObject()
+
+> **loadFromObject**(`data`, `path`, `parent?`): `Promise`\<`unknown`\>
+
+Defined in: [src/lib/Declaration.ts:435](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L435)
+
+Load configuration data from the given object.
+
+#### Parameters
+
+##### data
+
+`dT.IDict`
+
+The object containing the configuration data.
+
+##### path
+
+`string`
+
+The path of the configuration (file) to be loaded.
+
+##### parent?
+
+`string`
+
+The path of the parent configuration (file) that is loading this configuration.
+
+#### Returns
+
+`Promise`\<`unknown`\>
+
+***
+
+### loadFromObjectSync()
+
+> **loadFromObjectSync**(`data`, `path`, `parent?`): `unknown`
+
+Defined in: [src/lib/Declaration.ts:442](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L442)
+
+The synchronous version of `loadFromObject()`.
+
+#### Parameters
+
+##### data
+
+`dT.IDict`
+
+##### path
+
+`string`
+
+##### parent?
+
+`string`
+
+#### Returns
+
+`unknown`
+
+#### See
+
+[ILoader.loadFromObject](#loadfromobject)
+
+***
+
 ### loadSync()
 
 > **loadSync**(`path`, `parent?`): `unknown`
