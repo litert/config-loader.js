@@ -1,5 +1,9 @@
 # Changes Logs
 
+## v1.2.0
+
+- fix(loader): correctly use `parent` parameter when loading files
+
 ## v1.1.1
 
 - feat(loader): added `skipUnknownOperators` option

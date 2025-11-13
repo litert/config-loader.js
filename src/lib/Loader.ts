@@ -218,13 +218,13 @@ export class ConfigLoader implements dL.ILoader {
         return Object.keys(this._operators);
     }
 
-    public load(filePath: string): Promise<unknown> {
+    public load(filePath: string, parent?: string): Promise<unknown> {
 
-        return this._asyncLoader.load(filePath, this);
+        return this._asyncLoader.load(filePath, this, parent);
     }
 
-    public loadSync(filePath: string): unknown {
+    public loadSync(filePath: string, parent?: string): unknown {
 
-        return this._syncLoader.load(filePath, this);
+        return this._syncLoader.load(filePath, this, parent);
     }
 }
