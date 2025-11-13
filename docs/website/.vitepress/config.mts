@@ -27,6 +27,7 @@ export default defineConfig({
           { text: 'Custom Encodings', link: '/guides/custom-encodings' },
           { text: 'Custom Data Readers', link: '/guides/custom-readers' },
           { text: 'Custom Syntax', link: '/guides/custom-syntax' },
+          { text: 'Load From Object', link: '/guides/load-from-object' },
         ]
       },
       {
