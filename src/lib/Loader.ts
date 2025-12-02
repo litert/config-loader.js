@@ -218,31 +218,82 @@ export class ConfigLoader implements dL.ILoader {
         return Object.keys(this._operators);
     }
 
-    public load(filePath: string, parent?: string): Promise<unknown> {
+    public load(...args: unknown[]): Promise<unknown> {
 
-        return this._asyncLoader.load(filePath, this, parent);
+        if (typeof args[0] === 'string') {
+
+            const filePath = args[0];
+            const parent = args[1] as string | undefined;
+
+            return this._asyncLoader.load(filePath, this, parent);
+        }
+
+        return this._asyncLoader.load(
+            (args[0] as dL.ILoadArgs).path,
+            this,
+            (args[0] as dL.ILoadArgs).parent,
+            (args[0] as dL.ILoadArgs).contextData,
+        );
     }
 
-    public loadSync(filePath: string, parent?: string): unknown {
+    public loadSync(...args: unknown[]): unknown {
 
-        return this._syncLoader.load(filePath, this, parent);
+        if (typeof args[0] === 'string') {
+
+            return this._syncLoader.load(
+                args[0],
+                this,
+                (args[1] as string | undefined)
+            );
+        }
+
+        return this._syncLoader.load(
+            (args[0] as dL.ILoadArgs).path,
+            this,
+            (args[0] as dL.ILoadArgs).parent,
+            (args[0] as dL.ILoadArgs).contextData,
+        );
     }
 
-    public async loadFromObject(
-        data: iL.IDict,
-        filePath: string,
-        parent?: string,
-    ): Promise<unknown> {
+    public async loadFromObject(...args: unknown[]): Promise<unknown> {
 
-        return this._asyncLoader.loadFromObject(this, data, filePath, parent);
+        if (args.length > 1) {
+
+            return this._asyncLoader.loadFromObject(
+                this,
+                args[0] as iL.IDict,
+                args[1] as string,
+                args[2] as string | undefined,
+            );
+        }
+
+        return this._asyncLoader.loadFromObject(
+            this,
+            (args[0] as dL.ILoadFromObjectArgs).data,
+            (args[0] as dL.ILoadFromObjectArgs).path,
+            (args[0] as dL.ILoadFromObjectArgs).parent,
+            (args[0] as dL.ILoadFromObjectArgs).contextData,
+        );
     }
 
-    public loadFromObjectSync(
-        data: iL.IDict,
-        filePath: string,
-        parent?: string,
-    ): unknown {
+    public loadFromObjectSync(...args: unknown[]): unknown {
 
-        return this._syncLoader.loadFromObject(this, data, filePath, parent);
+        if (args.length > 1) {
+
+            return this._syncLoader.loadFromObject(
+                this,
+                args[0] as iL.IDict,
+                args[1] as string,
+                args[2] as string | undefined,
+            );
+        }
+
+        return this._syncLoader.loadFromObject(
+            this,
+            (args[0] as dL.ILoadFromObjectArgs).data,
+            (args[0] as dL.ILoadFromObjectArgs).path,
+            (args[0] as dL.ILoadFromObjectArgs).parent,
+            (args[0] as dL.ILoadFromObjectArgs).contextData,
+        );
     }
 }

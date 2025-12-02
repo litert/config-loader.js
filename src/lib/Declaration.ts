@@ -14,6 +14,8 @@
  *  limitations under the License.
  */
 
+/* eslint-disable max-lines */
+
 import type * as dT from '@litert/utils-ts-types';
 import type { EOperatorMode, EContainerOperatorOrder } from './Constants';
 
@@ -152,6 +154,11 @@ export interface IOperatorContext {
      * **It's not recommended to modify this data directly, as it may cause unexpected behavior.**
      */
     inputData: IVessel;
+
+    /**
+     * The data of context, during this loading process.
+     */
+    data: dT.IDict;
 }
 
 /**
@@ -370,6 +377,40 @@ export interface IAddOperatorOptions {
 }
 
 /**
+ * The interface type for the packed arguments for loading configuration from
+ * the given path.
+ */
+export interface ILoadArgs {
+
+    /**
+     * The path of the configuration (file) to be loaded.
+     */
+    path: string;
+
+    /**
+     * The path of the parent configuration (file) that is loading this configuration.
+     */
+    parent?: string;
+
+    /**
+     * The context data passed to the loader and operators, will be used as `context.data`.
+     */
+    contextData?: dT.IDict;
+}
+
+/**
+ * The interface type for the packed arguments for loading configuration from
+ * the given object.
+ */
+export interface ILoadFromObjectArgs extends ILoadArgs {
+
+    /**
+     * The object containing the configuration data.
+     */
+    data: dT.IDict;
+}
+
+/**
  * The interface for config loader.
  */
 export interface ILoader {
@@ -419,9 +460,28 @@ export interface ILoader {
     load(path: string, parent?: string): Promise<unknown>;
 
     /**
+     * Load a configuration (file) from the given path.
+     *
+     * @param args      The packed arguments for loading configuration.
+     */
+    load(args: ILoadArgs): Promise<unknown>;
+
+    /**
      * The synchronous version of `load()`.
      *
-     * @see {@link ILoader.load}
+     * @param args      The packed arguments for loading configuration.
+     *
+     * @see {@link load}
+     */
+    loadSync(args: ILoadArgs): unknown;
+
+    /**
+     * The synchronous version of `load()`.
+     *
+     * @param path      The path of the configuration (file) to be loaded.
+     * @param parent    The path of the parent configuration (file) that is loading this configuration.
+     *
+     * @see {@link load}
      */
     loadSync(path: string, parent?: string): unknown;
 
@@ -435,9 +495,23 @@ export interface ILoader {
     loadFromObject(data: dT.IDict, path: string, parent?: string): Promise<unknown>;
 
     /**
+     * Load configuration data from the given object.
+     *
+     * @param args   The packed arguments for loading configuration from object.
+     */
+    loadFromObject(args: ILoadFromObjectArgs): Promise<unknown>;
+
+    /**
      * The synchronous version of `loadFromObject()`.
      *
-     * @see {@link ILoader.loadFromObject}
+     * @see {@link loadFromObject}
      */
     loadFromObjectSync(data: dT.IDict, path: string, parent?: string): unknown;
+
+    /**
+     * The synchronous version of `loadFromObject()`.
+     *
+     * @see {@link loadFromObject}
+     */
+    loadFromObjectSync(args: ILoadFromObjectArgs): unknown;
 }

@@ -16,6 +16,7 @@
 
 import type * as dL from '../Declaration';
 import type * as iL from './Decl';
+import type * as dT from '@litert/utils-ts-types';
 import * as cL from '../Constants';
 import * as eL from '../Errors';
 import * as _ from '../Utils';
@@ -28,6 +29,7 @@ export class SyncConfigLoader extends AbstractLoader {
         input: iL.IDict,
         filePath: string,
         parent?: string,
+        contextData: dT.IDict = {},
     ): unknown {
 
         if (Array.isArray(input)) {
@@ -42,6 +44,7 @@ export class SyncConfigLoader extends AbstractLoader {
                 'output': ret,
                 'inputEntry': 0,
                 'outputEntry': 0,
+                'data': contextData,
             });
 
             return ret;
@@ -59,6 +62,7 @@ export class SyncConfigLoader extends AbstractLoader {
                 'output': ret,
                 'inputEntry': '',
                 'outputEntry': '',
+                'data': contextData,
             });
 
             return ret;
@@ -67,7 +71,12 @@ export class SyncConfigLoader extends AbstractLoader {
         throw new eL.E_INVALID_CONFIG({ filePath });
     }
 
-    public load(filePath: string, loader: dL.ILoader, parent?: string): unknown {
+    public load(
+        filePath: string,
+        loader: dL.ILoader,
+        parent?: string,
+        contextData?: dT.IDict,
+    ): unknown {
 
         if (!this._reader.readSync) {
 
@@ -96,7 +105,7 @@ export class SyncConfigLoader extends AbstractLoader {
             throw new eL.E_DECODING_FAILED({ encoding, filePath }, err);
         }
 
-        return this.loadFromObject(loader, input, filePath, parent);
+        return this.loadFromObject(loader, input, filePath, parent, contextData);
     }
 
     private _processString(str: string, ctx: dL.IOperatorContext): void {

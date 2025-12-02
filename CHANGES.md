@@ -1,5 +1,18 @@
 # Changes Logs
 
+## v1.3.0
+
+- feat(loader): added ephemeral data sharing support during one time loading process
+
+    Added an `data` into the loading context, so the operators can store and
+    share data during one time loading process. And an optional `contextData`
+    parameter is added to the `load` and `loadFromObject` methods of the
+    `ConfigLoader` class to allow the operators to pass and share data during
+    the sub loading process.
+
+    This feature is only available in the `load*` methods with object input,
+    to reduce parameters complexity.
+
 ## v1.2.0
 
 - fix(loader): correctly use `parent` parameter when loading files
