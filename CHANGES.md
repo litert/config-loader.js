@@ -20,6 +20,12 @@
     loading process. An error will be thrown when a circular reference is
     detected.
 
+- feat(operator): operator "import" now could prevent circular reference
+
+    Now the `$[[import]]` operator could prevent circular reference caused by
+    importing a file which has already been loaded in the current loading
+    process. An error will be thrown when a circular reference is detected.
+
 ## v1.2.0
 
 - fix(loader): correctly use `parent` parameter when loading files
