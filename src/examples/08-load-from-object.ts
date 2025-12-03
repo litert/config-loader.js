@@ -56,4 +56,27 @@ const ret = loader.loadFromObjectSync({
     "resolveRelativePath": "{{ path :./a/b/c}}"
 },`${__dirname}/../test-data/07/main.json`);
 
+loader.loadFromObjectSync({
+    configData: {
+        "from_env_abc": "{{env:TEST_ABC}}",
+        "from_env_abc_and_bcd": "{{env:TEST_ABC}} {{env:TEST_BCD}}",
+        "bin01": "{{base64:AAAA}}",
+        "file1": "{{import:./file1.yml}}",
+        "d": "This will overwrite d in file1.yml",
+        "{{extends}}": "./file1.yml",
+        "extendsInNest": {
+            "{{extends}}": [
+                "./file1.yml",
+                "./file2.yml"
+            ],
+            "extendsInArray": [1, 2, "{{extends:file3.json}}", 3]
+        },
+        "importInArray": [1, 2, 3, "{{import:file1.yml}}", "{{base64:AAAABBBB}}"],
+        "importFileAsText": "{{text-file:./file1.yml}}",
+        "importFileAsBinary": "{{binary-file:./file1.yml}}",
+        "resolveRelativePath": "{{ path :./a/b/c}}"
+    },
+    path: `${__dirname}/../test-data/07/main.json`
+});
+
 console.log(ret);

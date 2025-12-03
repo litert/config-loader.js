@@ -39,6 +39,10 @@ process.env.TEST_BCD = '456';
 
     const ret = await loader.load(`${__dirname}/../../test-data/01/main.json`);
 
+    await loader.load({
+        path: `${__dirname}/../../test-data/01/main.json`,
+    });
+
     console.log(ret);
 
 })();

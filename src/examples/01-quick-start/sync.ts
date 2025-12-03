@@ -37,4 +37,8 @@ process.env.TEST_BCD = '456';
 
 const ret = loader.loadSync(`${__dirname}/../../test-data/01/main.json`);
 
+loader.loadSync({
+    path: `${__dirname}/../../test-data/01/main.json`,
+});
+
 console.log(ret);

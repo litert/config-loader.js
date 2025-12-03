@@ -218,6 +218,8 @@ export class ConfigLoader implements dL.ILoader {
         return Object.keys(this._operators);
     }
 
+    public load(path: string, parent?: string): Promise<unknown>;
+    public load(args: dL.ILoadArgs): Promise<unknown>;
     public load(...args: unknown[]): Promise<unknown> {
 
         if (typeof args[0] === 'string') {
@@ -236,6 +238,8 @@ export class ConfigLoader implements dL.ILoader {
         );
     }
 
+    public loadSync(file: string, parent?: string): unknown;
+    public loadSync(args: dL.ILoadArgs): unknown;
     public loadSync(...args: unknown[]): unknown {
 
         if (typeof args[0] === 'string') {
@@ -255,6 +259,8 @@ export class ConfigLoader implements dL.ILoader {
         );
     }
 
+    public async loadFromObject(data: iL.IDict, path: string, parent?: string): Promise<unknown>;
+    public async loadFromObject(args: dL.ILoadFromObjectArgs): Promise<unknown>;
     public async loadFromObject(...args: unknown[]): Promise<unknown> {
 
         if (args.length > 1) {
@@ -276,6 +282,8 @@ export class ConfigLoader implements dL.ILoader {
         );
     }
 
+    public loadFromObjectSync(data: iL.IDict, path: string, parent?: string): unknown;
+    public loadFromObjectSync(args: dL.ILoadFromObjectArgs): unknown;
     public loadFromObjectSync(...args: unknown[]): unknown {
 
         if (args.length > 1) {
