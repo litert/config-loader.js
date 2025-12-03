@@ -73,7 +73,10 @@ NodeTest.describe('Built-in Operator: Extends', async () => {
 
         reader.files['/config.json'] = {
             'content': JSON.stringify({
-                '$[[extends]]': './b.json'
+                '$[[extends]]': './b.json',
+                'b': {
+                    '$[[extends]]': './b.json'
+                }
             }),
             'encoding': 'json'
         };

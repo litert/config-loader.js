@@ -73,7 +73,8 @@ NodeTest.describe('Built-in Operator: Import', async () => {
 
         reader.files['/config.json'] = {
             'content': JSON.stringify({
-                'a': '$[[import:./b.json]]'
+                'a': '$[[import:./b.json]]',
+                'b': '$[[import:./b.json]]'
             }),
             'encoding': 'json'
         };
