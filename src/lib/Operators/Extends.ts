@@ -23,7 +23,7 @@ const FILES_TRAVERSED = Symbol('extends:files_traversed');
 
 function startAndCheck(ctx: dL.IOperatorContext, file: string): void {
 
-    const filesTraversed = ctx.data[FILES_TRAVERSED] ??= {
+    const filesTraversed = ctx.contextData[FILES_TRAVERSED] ??= {
         [ctx.currentPath]: true,
     };
 
@@ -37,7 +37,7 @@ function startAndCheck(ctx: dL.IOperatorContext, file: string): void {
 
 function clean(ctx: dL.IOperatorContext, file: string): void {
 
-    delete ctx.data[FILES_TRAVERSED]?.[file];
+    delete ctx.contextData[FILES_TRAVERSED]?.[file];
 }
 
 class ExtendsContainerOperator implements dL.IContainerOperator {
@@ -55,7 +55,7 @@ class ExtendsContainerOperator implements dL.IContainerOperator {
             const data = await ctx.loader.load({
                 path: filePath,
                 parent: ctx.currentPath,
-                contextData: ctx.data,
+                contextData: ctx.contextData,
             }) as dL.IVessel;
 
             clean(ctx, filePath);
@@ -110,7 +110,7 @@ class ExtendsContainerOperator implements dL.IContainerOperator {
             const data = ctx.loader.loadSync({
                 path: filePath,
                 parent: ctx.currentPath,
-                contextData: ctx.data,
+                contextData: ctx.contextData,
             }) as dL.IVessel;
 
             clean(ctx, filePath);
@@ -143,7 +143,7 @@ class ExtendsBlockOperator implements dL.IBlockOperator {
         const data = await ctx.loader.load({
             path: filePath,
             parent: ctx.currentPath,
-            contextData: ctx.data,
+            contextData: ctx.contextData,
         }) as dL.IVessel;
 
         clean(ctx, filePath);
@@ -170,7 +170,7 @@ class ExtendsBlockOperator implements dL.IBlockOperator {
         const data = ctx.loader.loadSync({
             path: filePath,
             parent: ctx.currentPath,
-            contextData: ctx.data,
+            contextData: ctx.contextData,
         }) as dL.IVessel;
 
         clean(ctx, filePath);

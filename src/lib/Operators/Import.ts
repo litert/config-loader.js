@@ -32,7 +32,7 @@ class ImportBlockOperator implements dL.IBlockOperator {
         const data = await ctx.loader.load({
             'path': filePath,
             'parent': ctx.currentPath,
-            'contextData': ctx.data,
+            'contextData': ctx.contextData,
         });
 
         this._clean(ctx, filePath);
@@ -56,7 +56,7 @@ class ImportBlockOperator implements dL.IBlockOperator {
         const data = ctx.loader.loadSync({
             'path': filePath,
             'parent': ctx.currentPath,
-            'contextData': ctx.data,
+            'contextData': ctx.contextData,
         });
 
         this._clean(ctx, filePath);
@@ -73,7 +73,7 @@ class ImportBlockOperator implements dL.IBlockOperator {
 
     private _checkAndStart(ctx: dL.IOperatorContext, file: string): void {
 
-        const filesTraversed = ctx.data[FILES_TRAVERSED] ??= {
+        const filesTraversed = ctx.contextData[FILES_TRAVERSED] ??= {
             [ctx.currentPath]: true,
         } as IDict;
 
@@ -87,7 +87,7 @@ class ImportBlockOperator implements dL.IBlockOperator {
 
     private _clean(ctx: dL.IOperatorContext, file: string): void {
 
-        delete ctx.data[FILES_TRAVERSED]?.[file];
+        delete ctx.contextData[FILES_TRAVERSED]?.[file];
     }
 }
 

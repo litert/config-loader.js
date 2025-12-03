@@ -46,15 +46,15 @@ class DemoOperator implements dL.IOperator {
                 options: dL.IOperationOptions,
             ): void {
 
-                ctx.data.files ??= [];
-                ctx.data.files.push(operand);
+                ctx.contextData.files ??= [];
+                ctx.contextData.files.push(operand);
                 if (_.isObject(ctx.output)) {
 
-                    ctx.output[ctx.outputEntry] = ctx.data.files;
+                    ctx.output[ctx.outputEntry] = ctx.contextData.files;
                 }
                 else {
 
-                    ctx.output.push(ctx.data.files);
+                    ctx.output.push(ctx.contextData.files);
                 }
             }
         },
@@ -150,7 +150,7 @@ async function doTestLoadObjectAsync(
     reader.files = files;
 
     const data = contextData ?
-        await loader.loadFromObject({ path: rootFile, data: input, contextData }) :
+        await loader.loadFromObject({ path: rootFile, configData: input, contextData }) :
         await loader.loadFromObject(input, rootFile, null as any);
 
     NodeAssert.deepStrictEqual(data, expected);
@@ -169,7 +169,7 @@ function doTestLoadObjectSync(
     reader.files = files;
 
     const data = contextData ?
-        loader.loadFromObjectSync({ path: rootFile, data: input, contextData }) :
+        loader.loadFromObjectSync({ path: rootFile, configData: input, contextData }) :
         loader.loadFromObjectSync(input, rootFile, null as any);
 
     NodeAssert.deepStrictEqual(data, expected);

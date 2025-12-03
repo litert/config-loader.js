@@ -158,7 +158,7 @@ export interface IOperatorContext {
     /**
      * The data of context, during this loading process.
      */
-    data: dT.IDict;
+    contextData: dT.IDict;
 }
 
 /**
@@ -407,7 +407,7 @@ export interface ILoadFromObjectArgs extends ILoadArgs {
     /**
      * The object containing the configuration data.
      */
-    data: dT.IDict;
+    configData: dT.IDict;
 }
 
 /**

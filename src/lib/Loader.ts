@@ -269,7 +269,7 @@ export class ConfigLoader implements dL.ILoader {
 
         return this._asyncLoader.loadFromObject(
             this,
-            (args[0] as dL.ILoadFromObjectArgs).data,
+            (args[0] as dL.ILoadFromObjectArgs).configData,
             (args[0] as dL.ILoadFromObjectArgs).path,
             (args[0] as dL.ILoadFromObjectArgs).parent,
             (args[0] as dL.ILoadFromObjectArgs).contextData,
@@ -290,7 +290,7 @@ export class ConfigLoader implements dL.ILoader {
 
         return this._syncLoader.loadFromObject(
             this,
-            (args[0] as dL.ILoadFromObjectArgs).data,
+            (args[0] as dL.ILoadFromObjectArgs).configData,
             (args[0] as dL.ILoadFromObjectArgs).path,
             (args[0] as dL.ILoadFromObjectArgs).parent,
             (args[0] as dL.ILoadFromObjectArgs).contextData,

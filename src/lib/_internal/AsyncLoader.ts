@@ -44,7 +44,7 @@ export class AsyncConfigLoader extends AbstractLoader {
                 'output': ret,
                 'inputEntry': 0,
                 'outputEntry': 0,
-                'data': contextData,
+                'contextData': contextData,
             });
 
             return ret;
@@ -62,7 +62,7 @@ export class AsyncConfigLoader extends AbstractLoader {
                 'output': ret,
                 'inputEntry': '',
                 'outputEntry': '',
-                'data': contextData,
+                'contextData': contextData,
             });
 
             return ret;
