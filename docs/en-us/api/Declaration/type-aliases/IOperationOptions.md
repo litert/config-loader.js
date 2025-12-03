@@ -4,7 +4,7 @@
 
 > **IOperationOptions** = `dT.IDict`\<`string` \| `boolean`\>
 
-Defined in: [src/lib/Declaration.ts:33](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L33)
+Defined in: [src/lib/Declaration.ts:35](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L35)
 
 The additional options for operations.
 

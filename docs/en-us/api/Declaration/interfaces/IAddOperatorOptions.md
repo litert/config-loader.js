@@ -2,7 +2,7 @@
 
 # Interface: IAddOperatorOptions
 
-Defined in: [src/lib/Declaration.ts:347](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L347)
+Defined in: [src/lib/Declaration.ts:354](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L354)
 
 The options for adding an operator to the loader.
 
@@ -12,7 +12,7 @@ The options for adding an operator to the loader.
 
 > `optional` **aliases**: `string`[]
 
-Defined in: [src/lib/Declaration.ts:369](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L369)
+Defined in: [src/lib/Declaration.ts:376](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L376)
 
 Additional aliases for the operator.
 
@@ -24,7 +24,7 @@ This will not override the built-in aliases, but will be added to the aliases of
 
 > `optional` **noBuiltInAliases**: `boolean`
 
-Defined in: [src/lib/Declaration.ts:362](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L362)
+Defined in: [src/lib/Declaration.ts:369](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L369)
 
 Ignore the built-in aliases of the operator.
 
@@ -36,7 +36,7 @@ If this is set to `true`, the built-in aliases of the operator will not be regis
 
 > `optional` **overrideCode**: `string`
 
-Defined in: [src/lib/Declaration.ts:355](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L355)
+Defined in: [src/lib/Declaration.ts:362](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L362)
 
 Override (replace) the operator code.
 

@@ -2,7 +2,7 @@
 
 # Interface: IBlockOperator
 
-Defined in: [src/lib/Declaration.ts:250](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L250)
+Defined in: [src/lib/Declaration.ts:257](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L257)
 
 The interface for block operators.
 
@@ -12,7 +12,7 @@ The interface for block operators.
 
 > **process**(`operand`, `context`, `options`): `void` \| `Promise`\<`void`\>
 
-Defined in: [src/lib/Declaration.ts:264](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L264)
+Defined in: [src/lib/Declaration.ts:271](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L271)
 
 Process the given operand and context.
 
@@ -54,7 +54,7 @@ v1.1.0: Added `options` parameter.
 
 > **processSync**(`operand`, `context`, `options`): `void`
 
-Defined in: [src/lib/Declaration.ts:275](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L275)
+Defined in: [src/lib/Declaration.ts:282](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L282)
 
 The synchronous version of `process()`.
 

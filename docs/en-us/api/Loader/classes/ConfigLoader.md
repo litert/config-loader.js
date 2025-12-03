@@ -162,29 +162,57 @@ Check if the loader has the given operator registered.
 
 ### load()
 
-> **load**(`filePath`, `parent?`): `Promise`\<`unknown`\>
+#### Call Signature
+
+> **load**(`path`, `parent?`): `Promise`\<`unknown`\>
 
 Defined in: [src/lib/Loader.ts:221](https://github.com/litert/config-loader.js/blob/master/src/lib/Loader.ts#L221)
 
 Load a configuration (file) from the given path.
 
-#### Parameters
+##### Parameters
 
-##### filePath
+###### path
 
 `string`
 
-##### parent?
+The path of the configuration (file) to be loaded.
+
+###### parent?
 
 `string`
 
 The path of the parent configuration (file) that is loading this configuration.
 
-#### Returns
+##### Returns
 
 `Promise`\<`unknown`\>
 
-#### Implementation of
+##### Implementation of
+
+[`ILoader`](../../Declaration/interfaces/ILoader.md).[`load`](../../Declaration/interfaces/ILoader.md#load)
+
+#### Call Signature
+
+> **load**(`args`): `Promise`\<`unknown`\>
+
+Defined in: [src/lib/Loader.ts:222](https://github.com/litert/config-loader.js/blob/master/src/lib/Loader.ts#L222)
+
+Load a configuration (file) from the given path.
+
+##### Parameters
+
+###### args
+
+[`ILoadArgs`](../../Declaration/interfaces/ILoadArgs.md)
+
+The packed arguments for loading configuration.
+
+##### Returns
+
+`Promise`\<`unknown`\>
+
+##### Implementation of
 
 [`ILoader`](../../Declaration/interfaces/ILoader.md).[`load`](../../Declaration/interfaces/ILoader.md#load)
 
@@ -192,35 +220,63 @@ The path of the parent configuration (file) that is loading this configuration.
 
 ### loadFromObject()
 
-> **loadFromObject**(`data`, `filePath`, `parent?`): `Promise`\<`unknown`\>
+#### Call Signature
 
-Defined in: [src/lib/Loader.ts:231](https://github.com/litert/config-loader.js/blob/master/src/lib/Loader.ts#L231)
+> **loadFromObject**(`data`, `path`, `parent?`): `Promise`\<`unknown`\>
+
+Defined in: [src/lib/Loader.ts:262](https://github.com/litert/config-loader.js/blob/master/src/lib/Loader.ts#L262)
 
 Load configuration data from the given object.
 
-#### Parameters
+##### Parameters
 
-##### data
+###### data
 
 `iL.IDict`
 
 The object containing the configuration data.
 
-##### filePath
+###### path
 
 `string`
 
-##### parent?
+The path of the configuration (file) to be loaded.
+
+###### parent?
 
 `string`
 
 The path of the parent configuration (file) that is loading this configuration.
 
-#### Returns
+##### Returns
 
 `Promise`\<`unknown`\>
 
-#### Implementation of
+##### Implementation of
+
+[`ILoader`](../../Declaration/interfaces/ILoader.md).[`loadFromObject`](../../Declaration/interfaces/ILoader.md#loadfromobject)
+
+#### Call Signature
+
+> **loadFromObject**(`args`): `Promise`\<`unknown`\>
+
+Defined in: [src/lib/Loader.ts:263](https://github.com/litert/config-loader.js/blob/master/src/lib/Loader.ts#L263)
+
+Load configuration data from the given object.
+
+##### Parameters
+
+###### args
+
+[`ILoadFromObjectArgs`](../../Declaration/interfaces/ILoadFromObjectArgs.md)
+
+The packed arguments for loading configuration from object.
+
+##### Returns
+
+`Promise`\<`unknown`\>
+
+##### Implementation of
 
 [`ILoader`](../../Declaration/interfaces/ILoader.md).[`loadFromObject`](../../Declaration/interfaces/ILoader.md#loadfromobject)
 
@@ -228,35 +284,63 @@ The path of the parent configuration (file) that is loading this configuration.
 
 ### loadFromObjectSync()
 
-> **loadFromObjectSync**(`data`, `filePath`, `parent?`): `unknown`
+#### Call Signature
 
-Defined in: [src/lib/Loader.ts:240](https://github.com/litert/config-loader.js/blob/master/src/lib/Loader.ts#L240)
+> **loadFromObjectSync**(`data`, `path`, `parent?`): `unknown`
+
+Defined in: [src/lib/Loader.ts:285](https://github.com/litert/config-loader.js/blob/master/src/lib/Loader.ts#L285)
 
 The synchronous version of `loadFromObject()`.
 
-#### Parameters
+##### Parameters
 
-##### data
+###### data
 
 `iL.IDict`
 
-##### filePath
+###### path
 
 `string`
 
-##### parent?
+###### parent?
 
 `string`
 
-#### Returns
+##### Returns
 
 `unknown`
 
-#### See
+##### See
 
-[ILoader.loadFromObject](../../Declaration/interfaces/ILoader.md#loadfromobject)
+[loadFromObject](../../Declaration/interfaces/ILoader.md#loadfromobject)
 
-#### Implementation of
+##### Implementation of
+
+[`ILoader`](../../Declaration/interfaces/ILoader.md).[`loadFromObjectSync`](../../Declaration/interfaces/ILoader.md#loadfromobjectsync)
+
+#### Call Signature
+
+> **loadFromObjectSync**(`args`): `unknown`
+
+Defined in: [src/lib/Loader.ts:286](https://github.com/litert/config-loader.js/blob/master/src/lib/Loader.ts#L286)
+
+The synchronous version of `loadFromObject()`.
+
+##### Parameters
+
+###### args
+
+[`ILoadFromObjectArgs`](../../Declaration/interfaces/ILoadFromObjectArgs.md)
+
+##### Returns
+
+`unknown`
+
+##### See
+
+[loadFromObject](../../Declaration/interfaces/ILoader.md#loadfromobject)
+
+##### Implementation of
 
 [`ILoader`](../../Declaration/interfaces/ILoader.md).[`loadFromObjectSync`](../../Declaration/interfaces/ILoader.md#loadfromobjectsync)
 
@@ -264,31 +348,59 @@ The synchronous version of `loadFromObject()`.
 
 ### loadSync()
 
-> **loadSync**(`filePath`, `parent?`): `unknown`
+#### Call Signature
 
-Defined in: [src/lib/Loader.ts:226](https://github.com/litert/config-loader.js/blob/master/src/lib/Loader.ts#L226)
+> **loadSync**(`file`, `parent?`): `unknown`
+
+Defined in: [src/lib/Loader.ts:241](https://github.com/litert/config-loader.js/blob/master/src/lib/Loader.ts#L241)
 
 The synchronous version of `load()`.
 
-#### Parameters
+##### Parameters
 
-##### filePath
-
-`string`
-
-##### parent?
+###### file
 
 `string`
 
-#### Returns
+###### parent?
+
+`string`
+
+##### Returns
 
 `unknown`
 
-#### See
+##### See
 
-[ILoader.load](../../Declaration/interfaces/ILoader.md#load)
+[load](../../Declaration/interfaces/ILoader.md#load)
 
-#### Implementation of
+##### Implementation of
+
+[`ILoader`](../../Declaration/interfaces/ILoader.md).[`loadSync`](../../Declaration/interfaces/ILoader.md#loadsync)
+
+#### Call Signature
+
+> **loadSync**(`args`): `unknown`
+
+Defined in: [src/lib/Loader.ts:242](https://github.com/litert/config-loader.js/blob/master/src/lib/Loader.ts#L242)
+
+The synchronous version of `load()`.
+
+##### Parameters
+
+###### args
+
+[`ILoadArgs`](../../Declaration/interfaces/ILoadArgs.md)
+
+##### Returns
+
+`unknown`
+
+##### See
+
+[load](../../Declaration/interfaces/ILoader.md#load)
+
+##### Implementation of
 
 [`ILoader`](../../Declaration/interfaces/ILoader.md).[`loadSync`](../../Declaration/interfaces/ILoader.md#loadsync)
 

@@ -2,7 +2,7 @@
 
 # Interface: IOperator
 
-Defined in: [src/lib/Declaration.ts:160](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L160)
+Defined in: [src/lib/Declaration.ts:167](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L167)
 
 The interface type for config loader operators.
 
@@ -12,7 +12,7 @@ The interface type for config loader operators.
 
 > `readonly` **aliases**: `string`[]
 
-Defined in: [src/lib/Declaration.ts:183](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L183)
+Defined in: [src/lib/Declaration.ts:190](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L190)
 
 The code aliases of the operator, its format is the same as `code`.
 
@@ -27,7 +27,7 @@ Or add additional aliases to the operator by the `aliases` option in `IAddOperat
 
 > `readonly` **code**: `string`
 
-Defined in: [src/lib/Declaration.ts:173](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L173)
+Defined in: [src/lib/Declaration.ts:180](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L180)
 
 The built-in code of the operator, could only contains below characters:
 
@@ -45,7 +45,7 @@ when adding the operator to the loader.
 
 > `readonly` **modes**: `object`
 
-Defined in: [src/lib/Declaration.ts:188](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L188)
+Defined in: [src/lib/Declaration.ts:195](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L195)
 
 Where the operator should be used.
 

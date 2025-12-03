@@ -2,7 +2,7 @@
 
 # Class: ImportOperator
 
-Defined in: [src/lib/Operators/Import.ts:54](https://github.com/litert/config-loader.js/blob/master/src/lib/Operators/Import.ts#L54)
+Defined in: [src/lib/Operators/Import.ts:94](https://github.com/litert/config-loader.js/blob/master/src/lib/Operators/Import.ts#L94)
 
 The interface type for config loader operators.
 
@@ -26,7 +26,7 @@ The interface type for config loader operators.
 
 > `readonly` **aliases**: `never`[] = `[]`
 
-Defined in: [src/lib/Operators/Import.ts:58](https://github.com/litert/config-loader.js/blob/master/src/lib/Operators/Import.ts#L58)
+Defined in: [src/lib/Operators/Import.ts:98](https://github.com/litert/config-loader.js/blob/master/src/lib/Operators/Import.ts#L98)
 
 The code aliases of the operator, its format is the same as `code`.
 
@@ -45,7 +45,7 @@ Or add additional aliases to the operator by the `aliases` option in `IAddOperat
 
 > `readonly` **code**: `"import"` = `'import'`
 
-Defined in: [src/lib/Operators/Import.ts:56](https://github.com/litert/config-loader.js/blob/master/src/lib/Operators/Import.ts#L56)
+Defined in: [src/lib/Operators/Import.ts:96](https://github.com/litert/config-loader.js/blob/master/src/lib/Operators/Import.ts#L96)
 
 The built-in code of the operator, could only contains below characters:
 
@@ -67,7 +67,7 @@ when adding the operator to the loader.
 
 > `readonly` **modes**: `object`
 
-Defined in: [src/lib/Operators/Import.ts:60](https://github.com/litert/config-loader.js/blob/master/src/lib/Operators/Import.ts#L60)
+Defined in: [src/lib/Operators/Import.ts:100](https://github.com/litert/config-loader.js/blob/master/src/lib/Operators/Import.ts#L100)
 
 Where the operator should be used.
 

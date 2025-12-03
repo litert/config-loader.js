@@ -2,7 +2,7 @@
 
 # Class: ExtendsOperator
 
-Defined in: [src/lib/Operators/Extends.ts:138](https://github.com/litert/config-loader.js/blob/master/src/lib/Operators/Extends.ts#L138)
+Defined in: [src/lib/Operators/Extends.ts:187](https://github.com/litert/config-loader.js/blob/master/src/lib/Operators/Extends.ts#L187)
 
 The interface type for config loader operators.
 
@@ -26,7 +26,7 @@ The interface type for config loader operators.
 
 > `readonly` **aliases**: `never`[] = `[]`
 
-Defined in: [src/lib/Operators/Extends.ts:142](https://github.com/litert/config-loader.js/blob/master/src/lib/Operators/Extends.ts#L142)
+Defined in: [src/lib/Operators/Extends.ts:191](https://github.com/litert/config-loader.js/blob/master/src/lib/Operators/Extends.ts#L191)
 
 The code aliases of the operator, its format is the same as `code`.
 
@@ -45,7 +45,7 @@ Or add additional aliases to the operator by the `aliases` option in `IAddOperat
 
 > `readonly` **code**: `"extends"` = `'extends'`
 
-Defined in: [src/lib/Operators/Extends.ts:140](https://github.com/litert/config-loader.js/blob/master/src/lib/Operators/Extends.ts#L140)
+Defined in: [src/lib/Operators/Extends.ts:189](https://github.com/litert/config-loader.js/blob/master/src/lib/Operators/Extends.ts#L189)
 
 The built-in code of the operator, could only contains below characters:
 
@@ -67,7 +67,7 @@ when adding the operator to the loader.
 
 > `readonly` **modes**: `object`
 
-Defined in: [src/lib/Operators/Extends.ts:144](https://github.com/litert/config-loader.js/blob/master/src/lib/Operators/Extends.ts#L144)
+Defined in: [src/lib/Operators/Extends.ts:193](https://github.com/litert/config-loader.js/blob/master/src/lib/Operators/Extends.ts#L193)
 
 Where the operator should be used.
 

@@ -2,7 +2,7 @@
 
 # Interface: IEncoding
 
-Defined in: [src/lib/Declaration.ts:38](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L38)
+Defined in: [src/lib/Declaration.ts:40](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L40)
 
 The encoding decoder interface for config loader.
 
@@ -12,7 +12,7 @@ The encoding decoder interface for config loader.
 
 > `readonly` **name**: `string`
 
-Defined in: [src/lib/Declaration.ts:43](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L43)
+Defined in: [src/lib/Declaration.ts:45](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L45)
 
 The name of the encoding.
 
@@ -22,7 +22,7 @@ The name of the encoding.
 
 > **decode**(`data`): `unknown`
 
-Defined in: [src/lib/Declaration.ts:48](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L48)
+Defined in: [src/lib/Declaration.ts:50](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L50)
 
 Parse the given data and return the corresponding object.
 

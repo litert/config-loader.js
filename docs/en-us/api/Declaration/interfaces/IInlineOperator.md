@@ -2,7 +2,7 @@
 
 # Interface: IInlineOperator
 
-Defined in: [src/lib/Declaration.ts:216](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L216)
+Defined in: [src/lib/Declaration.ts:223](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L223)
 
 The interface for inline operators.
 
@@ -12,7 +12,7 @@ The interface for inline operators.
 
 > **process**(`operand`, `context`, `options`): `string` \| `Promise`\<`string`\>
 
-Defined in: [src/lib/Declaration.ts:229](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L229)
+Defined in: [src/lib/Declaration.ts:236](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L236)
 
 Process the given operand and context, and return the result as a string.
 
@@ -52,7 +52,7 @@ v1.1.0: Added `options` parameter.
 
 > **processSync**(`operand`, `context`, `options`): `string`
 
-Defined in: [src/lib/Declaration.ts:240](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L240)
+Defined in: [src/lib/Declaration.ts:247](https://github.com/litert/config-loader.js/blob/master/src/lib/Declaration.ts#L247)
 
 The synchronous version of `process()`.
 
