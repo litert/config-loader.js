@@ -19,6 +19,27 @@ import type * as dL from '../Declaration';
 import * as _ from '../Utils';
 import type { IDict } from '../_internal/Decl';
 
+const FILES_TRAVERSED = Symbol('extends:files_traversed');
+
+function startAndCheck(ctx: dL.IOperatorContext, file: string): void {
+
+    const filesTraversed = ctx.data[FILES_TRAVERSED] ??= {
+        [ctx.currentPath]: true,
+    };
+
+    if (filesTraversed[file]) {
+
+        throw new Error(`Circular reference detected when extending from "${file}".`);
+    }
+
+    filesTraversed[file] = true;
+}
+
+function clean(ctx: dL.IOperatorContext, file: string): void {
+
+    delete ctx.data[FILES_TRAVERSED]?.[file];
+}
+
 class ExtendsContainerOperator implements dL.IContainerOperator {
 
     public readonly order = cL.EContainerOperatorOrder.BEFORE;
@@ -27,10 +48,17 @@ class ExtendsContainerOperator implements dL.IContainerOperator {
 
         for (const path of this._parseArgs(args)) {
 
-            const data = await ctx.loader.load(
-                ctx.loader.reader.resolvePath(ctx.currentPath, path),
-                ctx.currentPath,
-            ) as dL.IVessel;
+            const filePath = ctx.loader.reader.resolvePath(ctx.currentPath, path);
+
+            startAndCheck(ctx, filePath);
+
+            const data = await ctx.loader.load({
+                path: filePath,
+                parent: ctx.currentPath,
+                contextData: ctx.data,
+            }) as dL.IVessel;
+
+            clean(ctx, filePath);
 
             if (_.isObject(data)) {
 
@@ -38,7 +66,7 @@ class ExtendsContainerOperator implements dL.IContainerOperator {
             }
             else {
 
-                throw new TypeError('Cannot extend from non-object from "${path}".');
+                throw new TypeError(`Cannot extend from non-object from "${path}".`);
             }
         }
     }
@@ -75,10 +103,17 @@ class ExtendsContainerOperator implements dL.IContainerOperator {
 
         for (const path of this._parseArgs(args)) {
 
-            const data = ctx.loader.loadSync(
-                ctx.loader.reader.resolvePath(ctx.currentPath, path),
-                ctx.currentPath,
-            ) as dL.IVessel;
+            const filePath = ctx.loader.reader.resolvePath(ctx.currentPath, path);
+
+            startAndCheck(ctx, filePath);
+
+            const data = ctx.loader.loadSync({
+                path: filePath,
+                parent: ctx.currentPath,
+                contextData: ctx.data,
+            }) as dL.IVessel;
+
+            clean(ctx, filePath);
 
             if (_.isObject(data)) {
 
@@ -86,7 +121,7 @@ class ExtendsContainerOperator implements dL.IContainerOperator {
             }
             else {
 
-                throw new TypeError('Cannot extend from non-object from "${path}".');
+                throw new TypeError(`Cannot extend from non-object from "${path}".`);
             }
         }
     }
@@ -101,10 +136,17 @@ class ExtendsBlockOperator implements dL.IBlockOperator {
             throw new TypeError(`Cannot use "$[[extends:${operand}]]" outsides arrays.`);
         }
 
-        const data = await ctx.loader.load(
-            ctx.loader.reader.resolvePath(ctx.currentPath, operand),
-            ctx.currentPath,
-        ) as dL.IVessel;
+        const filePath = ctx.loader.reader.resolvePath(ctx.currentPath, operand);
+
+        startAndCheck(ctx, filePath);
+
+        const data = await ctx.loader.load({
+            path: filePath,
+            parent: ctx.currentPath,
+            contextData: ctx.data,
+        }) as dL.IVessel;
+
+        clean(ctx, filePath);
 
         if (!Array.isArray(data)) {
 
@@ -121,10 +163,17 @@ class ExtendsBlockOperator implements dL.IBlockOperator {
             throw new TypeError(`Cannot use "$[[extends:${operand}]]" outsides arrays.`);
         }
 
-        const data = ctx.loader.loadSync(
-            ctx.loader.reader.resolvePath(ctx.currentPath, operand),
-            ctx.currentPath,
-        ) as dL.IVessel;
+        const filePath = ctx.loader.reader.resolvePath(ctx.currentPath, operand);
+
+        startAndCheck(ctx, filePath);
+
+        const data = ctx.loader.loadSync({
+            path: filePath,
+            parent: ctx.currentPath,
+            contextData: ctx.data,
+        }) as dL.IVessel;
+
+        clean(ctx, filePath);
 
         if (!Array.isArray(data)) {
 

@@ -13,6 +13,13 @@
     This feature is only available in the `load*` methods with object input,
     to reduce parameters complexity.
 
+- feat(operator): operator "extends" now could prevent circular reference
+
+    Now the `$[[extends]]` operator could prevent circular reference caused by
+    extending from a parent file which has already been loaded in the current
+    loading process. An error will be thrown when a circular reference is
+    detected.
+
 ## v1.2.0
 
 - fix(loader): correctly use `parent` parameter when loading files
