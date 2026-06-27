@@ -20,6 +20,9 @@ A configuration file loader for JavaScript application.
 npm i @litert/config-loader --save
 ```
 
+> [!IMPORTANT]
+> Since `v2.0.0`, this package is ESM-only.
+
 ## Documentation
 
 - [en-US](https://litert.org/projects/config-loader.js/)
@@ -27,3 +30,7 @@ npm i @litert/config-loader --save
 ## License
 
 This library is published under [Apache-2.0](./LICENSE) license.
+
+## AI Disclaimer
+
+This project may use AI tools to assist in documentation writing and inspiration for unit test cases, but all code is written and reviewed by human developers.

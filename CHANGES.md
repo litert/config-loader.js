@@ -22,6 +22,8 @@
 
 - chore: updated the dependencies to the latest versions
 
+- doc: updated the changelog and ESM-related usage examples
+
 ## v1.3.0
 
 - feat(loader): added ephemeral data sharing support during one time loading process

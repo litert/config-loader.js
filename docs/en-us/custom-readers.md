@@ -55,8 +55,8 @@ Let's try to use this reader in the `ConfigLoader`:
 ```ts
 // file: main.ts
 import * as ConfigLoader from '@litert/config-loader';
-import { HttpReader } from './HttpReader';
-import * as BuiltInEnc from '@litert/config-loader/lib/Encodings';
+import { HttpReader } from './HttpReader.js';
+import * as BuiltInEnc from '@litert/config-loader/encodings';
 
 process.env.TEST_ABC = '123';
 

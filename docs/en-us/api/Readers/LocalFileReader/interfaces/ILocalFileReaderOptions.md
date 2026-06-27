@@ -35,5 +35,5 @@ The path separator to use for resolving paths.
 #### Default
 
 ```ts
-require('node:path').sep
+import { sep } from 'node:path';
 ```

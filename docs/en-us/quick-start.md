@@ -19,9 +19,9 @@ npm i yaml # Optional, for YAML support
     ```ts
     // quick-start.ts
     import { ConfigLoader } from '@litert/config-loader';
-    import { LocalFileReader } from '@litert/config-loader/lib/Readers/LocalFileReader';
-    import * as BuiltInEnc from '@litert/config-loader/lib/Encodings';
-    import * as BuiltInOps from '@litert/config-loader/lib/Operators';
+    import { LocalFileReader } from '@litert/config-loader/readers/LocalFileReader';
+    import * as BuiltInEnc from '@litert/config-loader/encodings';
+    import * as BuiltInOps from '@litert/config-loader/operators';
 
     const loader = new ConfigLoader({
         'reader': new LocalFileReader({
@@ -97,7 +97,7 @@ npm i yaml # Optional, for YAML support
 3. Run the script
 
     ```bash
-    node quick-start.ts
+    npx tsc && node quick-start.js
     ```
 
     You can see the effects of all built-in operators in the output:

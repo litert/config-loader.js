@@ -346,7 +346,7 @@ const loader = new ConfigLoader.ConfigLoader({
     operators: [ new ValidateOperator() ]
 });
 
-const ret = loader.loadSync(`${__dirname}/../test-data/04/main.json`);
+const ret = loader.loadSync(`${import.meta.dirname}/../test-data/04/main.json`);
 
 console.log(ret);
 ```

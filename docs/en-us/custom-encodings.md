@@ -56,9 +56,9 @@ Now, let's try:
 ```ts
 // file: main.ts
 import * as ConfigLoader from '@litert/config-loader';
-import * as BuiltInOps from '@litert/config-loader/lib/Operators';
-import { LocalFileReader } from '@litert/config-loader/lib/Readers/LocalFileReader';
-import { IniEncoding } from './IniEncoding';
+import * as BuiltInOps from '@litert/config-loader/operators';
+import { LocalFileReader } from '@litert/config-loader/readers/LocalFileReader';
+import { IniEncoding } from './IniEncoding.js';
 
 const loader = new ConfigLoader.ConfigLoader({
     reader: new LocalFileReader({
