@@ -25,7 +25,8 @@ npm i @litert/config-loader --save
 
 ## Documentation
 
-- [en-US](https://litert.org/projects/config-loader.js/)
+- [API Reference (Markdown)](./docs/en-us/api/README.md)
+- [Documentation Website](https://litert.org/projects/config-loader.js/)
 
 ## License
 

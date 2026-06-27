@@ -24,6 +24,8 @@
 
 - doc: updated the changelog and ESM-related usage examples
 
+- doc: full rewrite of the API reference pages
+
 ## v1.3.0
 
 - feat(loader): added ephemeral data sharing support during one time loading process
