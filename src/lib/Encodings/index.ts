@@ -18,6 +18,9 @@ import type * as dL from '../Declaration.js';
 import { JsonEncoding } from './Json.js';
 import { YamlEncoding } from './Yaml.js';
 
+/**
+ * Get all built-in encodings (instance objects).
+ */
 export function getAllBuiltInEncodings(): dL.IEncoding[] {
 
     return [

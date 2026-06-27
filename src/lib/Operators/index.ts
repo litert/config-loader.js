@@ -24,6 +24,9 @@ import { ImportOperator } from './Import.js';
 import { ImportTextFileOperator } from './ImportTextFile.js';
 import { ResolvePathOperator } from './ResolvePath.js';
 
+/**
+ * Get all built-in operators (instance objects).
+ */
 export function getAllBuiltInOperators(): dL.IOperator[] {
 
     return [
