@@ -16,9 +16,9 @@
 
 import * as NodeTest from 'node:test';
 import * as NodeAssert from 'node:assert';
-import { DecodeHexOperator } from './DecodeHex';
-import * as cL from '../Constants';
-import type { IOperator } from '../Declaration';
+import { DecodeHexOperator } from './DecodeHex.js';
+import * as cL from '../Constants.js';
+import type { IOperator } from '../Declaration.js';
 
 
 NodeTest.describe('Built-in Operator: DecodeHex', () => {

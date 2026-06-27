@@ -14,8 +14,8 @@
  *  limitations under the License.
  */
 
-import * as cL from '../Constants';
-import type * as dL from '../Declaration';
+import * as cL from '../Constants.js';
+import type * as dL from '../Declaration.js';
 
 class ResolvePathInlineOperator implements dL.IInlineOperator {
 

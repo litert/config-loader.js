@@ -1,10 +1,37 @@
 {
   "name": "@litert/config-loader",
-  "version": "1.3.0",
+  "version": "2.0.0",
   "description": "A configuration file loader for JavaScript application.",
+  "type": "module",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "typings": "./lib/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./encodings": {
+      "types": "./lib/Encodings/index.d.ts",
+      "default": "./lib/Encodings/index.js"
+    },
+    "./encodings/*": {
+      "types": "./lib/Encodings/*.d.ts",
+      "default": "./lib/Encodings/*.js"
+    },
+    "./operators": {
+      "types": "./lib/Operators/index.d.ts",
+      "default": "./lib/Operators/index.js"
+    },
+    "./operators/*": {
+      "types": "./lib/Operators/*.d.ts",
+      "default": "./lib/Operators/*.js"
+    },
+    "./readers/*": {
+      "types": "./lib/Readers/*.d.ts",
+      "default": "./lib/Readers/*.js"
+    }
+  },
   "scripts": {
     "prepublishOnly": "npm run rebuild",
     "build": "tsc -v && tsc -p .",
@@ -32,24 +59,24 @@
   },
   "homepage": "https://github.com/litert/config-loader.js#readme",
   "devDependencies": {
-    "@commitlint/cli": "^19.6.1",
-    "@commitlint/config-conventional": "^19.6.0",
+    "@commitlint/cli": "^21.1.0",
+    "@commitlint/config-conventional": "^21.1.0",
     "@litert/eslint-plugin-rules": "^0.3.1",
-    "@types/node": "^22.10.2",
+    "@types/node": "^26.0.1",
     "husky": "^9.1.7",
-    "typedoc": "^0.28.5",
-    "typedoc-plugin-markdown": "^4.6.4",
-    "typedoc-vitepress-theme": "^1.1.2",
-    "typescript": "^5.7.2",
-    "undici": "^7.10.0",
-    "yaml": "^2.8.0"
+    "typedoc": "^0.28.19",
+    "typedoc-plugin-markdown": "^4.12.0",
+    "typedoc-vitepress-theme": "^1.1.3",
+    "typescript": "^6.0.3",
+    "undici": "^8.5.0",
+    "yaml": "^2.9.0"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=20.0.0"
   },
   "dependencies": {
-    "@litert/utils-object": "^1.5.0",
-    "@litert/utils-string": "^1.5.0",
-    "@litert/utils-ts-types": "^1.5.0"
+    "@litert/utils-object": "^2.0.0",
+    "@litert/utils-string": "^2.0.0",
+    "@litert/utils-ts-types": "^2.0.0"
   }
 }

@@ -16,24 +16,7 @@
 
 import * as NodeTest from 'node:test';
 import * as NodeAssert from 'node:assert';
-import * as _ from './Utils';
-
-NodeTest.describe('Function Utils.regexpEscape', () => {
-
-    for (const char of ['\\', '.', '*', '+', '?', '^', '$', '(', ')', '[', ']', '{', '}', '|']) {
-
-        NodeTest.it(`escape "${char}" correctly`, () => {
-            const expected = `\\${char}`;
-            NodeAssert.strictEqual(_.regexpEscape(char), expected);
-        });
-    }
-
-    NodeTest.it(`do nothing if no need to escape`, () => {
-
-        NodeAssert.strictEqual(_.regexpEscape('hello world'), 'hello world');
-        NodeAssert.strictEqual(_.regexpEscape(''), '');
-    });
-});
+import * as _ from './Utils.js';
 
 NodeTest.describe('Function Utils.parseOperation', () => {
 

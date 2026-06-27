@@ -14,15 +14,15 @@
  *  limitations under the License.
  */
 
-import type * as dL from '../Declaration';
-import { DecodeBase64Operator } from './DecodeBase64';
-import { EnvironmentVariableOperator } from './EnvironmentVariable';
-import { ExtendsOperator } from './Extends';
-import { DecodeHexOperator } from './DecodeHex';
-import { ImportBinaryFileOperator } from './ImportBinaryFile';
-import { ImportOperator } from './Import';
-import { ImportTextFileOperator } from './ImportTextFile';
-import { ResolvePathOperator } from './ResolvePath';
+import type * as dL from '../Declaration.js';
+import { DecodeBase64Operator } from './DecodeBase64.js';
+import { EnvironmentVariableOperator } from './EnvironmentVariable.js';
+import { ExtendsOperator } from './Extends.js';
+import { DecodeHexOperator } from './DecodeHex.js';
+import { ImportBinaryFileOperator } from './ImportBinaryFile.js';
+import { ImportOperator } from './Import.js';
+import { ImportTextFileOperator } from './ImportTextFile.js';
+import { ResolvePathOperator } from './ResolvePath.js';
 
 export function getAllBuiltInOperators(): dL.IOperator[] {
 

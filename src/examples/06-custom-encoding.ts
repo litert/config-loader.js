@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-import * as ConfigLoader from '../lib';
-import * as BuiltInOps from '../lib/Operators';
-import { LocalFileReader } from '../lib/Readers/LocalFileReader';
+import * as ConfigLoader from '../lib/index.js';
+import * as BuiltInOps from '../lib/Operators/index.js';
+import { LocalFileReader } from '../lib/Readers/LocalFileReader.js';
 
 class IniEncoding implements ConfigLoader.IEncoding {
 
@@ -64,6 +64,6 @@ const loader = new ConfigLoader.ConfigLoader({
 process.env.TEST_ABC = '123';
 process.env.TEST_BCD = '456';
 
-const ret = loader.loadSync(`${__dirname}/../test-data/06/main.ini`);
+const ret = loader.loadSync(`${import.meta.dirname}/../test-data/06/main.ini`);
 
 console.log(ret);

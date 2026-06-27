@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-import * as ConfigLoader from '../../lib';
-import * as BuiltInEnc from '../../lib/Encodings';
-import { LocalFileReader } from '../../lib/Readers/LocalFileReader';
-import { FileListOperator } from './file-list-operator';
+import * as ConfigLoader from '../../lib/index.js';
+import * as BuiltInEnc from '../../lib/Encodings/index.js';
+import { LocalFileReader } from '../../lib/Readers/LocalFileReader.js';
+import { FileListOperator } from './file-list-operator.js';
 
 const loader = new ConfigLoader.ConfigLoader({
     reader: new LocalFileReader({
@@ -29,6 +29,6 @@ const loader = new ConfigLoader.ConfigLoader({
     operators: [ new FileListOperator() ]
 });
 
-const ret = loader.loadSync(`${__dirname}/../../test-data/03/main.json`);
+const ret = loader.loadSync(`${import.meta.dirname}/../../test-data/03/main.json`);
 
 console.log(ret);

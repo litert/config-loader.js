@@ -17,12 +17,12 @@
 import * as NodeTest from 'node:test';
 import * as NodePath from 'node:path';
 import * as NodeAssert from 'node:assert';
-import * as cL from '../Constants';
-import * as dL from '../Declaration';
-import * as _ from '../Utils';
-import * as iL from '../_internal/Decl';
-import { SyncConfigLoader } from './SyncLoader';
-import { JsonEncoding } from '../Encodings';
+import * as cL from '../Constants.js';
+import * as dL from '../Declaration.js';
+import * as _ from '../Utils.js';
+import * as iL from '../_internal/Decl.js';
+import { SyncConfigLoader } from './SyncLoader.js';
+import { JsonEncoding } from '../Encodings/index.js';
 
 class DemoOperator implements dL.IOperator {
 

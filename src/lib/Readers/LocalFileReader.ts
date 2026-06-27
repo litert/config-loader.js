@@ -16,9 +16,9 @@
 
 import * as NodePath from 'node:path';
 import * as NodeFS from 'node:fs';
-import type * as dL from '../Declaration';
-import * as eL from '../Errors';
-import { IDict } from '../_internal/Decl';
+import type * as dL from '../Declaration.js';
+import * as eL from '../Errors.js';
+import { IDict } from '../_internal/Decl.js';
 
 /**
  * The options for the LocalFileReader constructor.
@@ -28,7 +28,7 @@ export interface ILocalFileReaderOptions {
     /**
      * The path separator to use for resolving paths.
      *
-     * @default require('node:path').sep
+     * @default NodePath.sep
      */
     pathSeparator?: string;
 

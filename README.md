@@ -12,7 +12,7 @@ A configuration file loader for JavaScript application.
 ## Requirement
 
 - TypeScript v5.0.0 (or newer)
-- Node.js v18.0.0 (or newer)
+- Node.js v20.0.0 (or newer)
 
 ## Installation
 

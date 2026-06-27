@@ -18,12 +18,12 @@ import * as NodeTest from 'node:test';
 import * as NodePath from 'node:path';
 import * as NodeAssert from 'node:assert';
 import * as NodeTimers from 'node:timers/promises';
-import * as dL from '../Declaration';
-import * as _ from '../Utils';
-import * as iL from '../_internal/Decl';
-import { JsonEncoding } from '../Encodings';
-import { ConfigLoader } from '../Loader';
-import { ExtendsOperator } from './Extends';
+import * as dL from '../Declaration.js';
+import * as _ from '../Utils.js';
+import * as iL from '../_internal/Decl.js';
+import { JsonEncoding } from '../Encodings/index.js';
+import { ConfigLoader } from '../Loader.js';
+import { ExtendsOperator } from './Extends.js';
 
 class MockReader implements dL.IDataReader {
 

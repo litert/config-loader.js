@@ -16,10 +16,10 @@
 
 import * as NodeTest from 'node:test';
 import * as NodeAssert from 'node:assert';
-import { EnvironmentVariableOperator } from './EnvironmentVariable';
-import * as cL from '../Constants';
-import type { IOperator } from '../Declaration';
-import type { IDict } from '../_internal/Decl';
+import { EnvironmentVariableOperator } from './EnvironmentVariable.js';
+import * as cL from '../Constants.js';
+import type { IOperator } from '../Declaration.js';
+import type { IDict } from '../_internal/Decl.js';
 
 
 NodeTest.describe('Built-in Operator: EnvironmentVariable', () => {

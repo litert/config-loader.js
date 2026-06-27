@@ -16,10 +16,10 @@
 
 import * as NodeTest from 'node:test';
 import * as NodeAssert from 'node:assert';
-import { ResolvePathOperator } from './ResolvePath';
-import * as cL from '../Constants';
-import type * as dL from '../Declaration';
-import type { IOperator } from '../Declaration';
+import { ResolvePathOperator } from './ResolvePath.js';
+import * as cL from '../Constants.js';
+import type * as dL from '../Declaration.js';
+import type { IOperator } from '../Declaration.js';
 
 class TestReader implements dL.IDataReader {
 

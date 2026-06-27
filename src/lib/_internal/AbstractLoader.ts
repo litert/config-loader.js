@@ -14,11 +14,11 @@
  *  limitations under the License.
  */
 
-import * as cL from '../Constants';
-import type * as dL from '../Declaration';
-import type * as iL from './Decl';
-import * as eL from '../Errors';
-import * as _ from '../Utils';
+import * as cL from '../Constants.js';
+import type * as dL from '../Declaration.js';
+import type * as iL from './Decl.js';
+import * as eL from '../Errors.js';
+import * as _ from '../Utils.js';
 
 export interface IPropNameOperation {
 

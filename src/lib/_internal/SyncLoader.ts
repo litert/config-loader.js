@@ -14,13 +14,13 @@
  *  limitations under the License.
  */
 
-import type * as dL from '../Declaration';
-import type * as iL from './Decl';
+import type * as dL from '../Declaration.js';
+import type * as iL from './Decl.js';
 import type * as dT from '@litert/utils-ts-types';
-import * as cL from '../Constants';
-import * as eL from '../Errors';
-import * as _ from '../Utils';
-import { AbstractLoader } from './AbstractLoader';
+import * as cL from '../Constants.js';
+import * as eL from '../Errors.js';
+import * as _ from '../Utils.js';
+import { AbstractLoader } from './AbstractLoader.js';
 
 export class SyncConfigLoader extends AbstractLoader {
 
@@ -206,7 +206,7 @@ export class SyncConfigLoader extends AbstractLoader {
             if (_.isObject(v)) {
 
                 const item: iL.IDict = {};
-                this._processObject(v as iL.IDict, {
+                this._processObject(v, {
                     ...ctx,
                     'output': item,
                     'inputEntry': '',
@@ -279,11 +279,11 @@ export class SyncConfigLoader extends AbstractLoader {
 
             if (_.isObject(v)) {
 
-                const prop: iL.IDict = ret[k] = typeof (ctx.output as iL.IDict)[k] === 'object' ?
-                    (ctx.output as iL.IDict)[k] as iL.IDict :
+                const prop: iL.IDict = ret[k] = _.isObject(ret[k]) ?
+                    ret[k] :
                     {};
 
-                this._processObject(v as iL.IDict, {
+                this._processObject(v, {
                     ...ctx,
                     'output': prop,
                     'inputEntry': '',

@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-import * as ConfigLoader from '../lib';
-import * as BuiltInEnc from '../lib/Encodings';
-import * as BuiltInOps from '../lib/Operators';
+import * as ConfigLoader from '../lib/index.js';
+import * as BuiltInEnc from '../lib/Encodings/index.js';
+import * as BuiltInOps from '../lib/Operators/index.js';
 import * as Undici from 'undici';
 
 class HttpReader implements ConfigLoader.IDataReader {

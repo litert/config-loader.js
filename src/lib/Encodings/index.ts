@@ -14,9 +14,9 @@
  *  limitations under the License.
  */
 
-import type * as dL from '../Declaration';
-import { JsonEncoding } from './Json';
-import { YamlEncoding } from './Yaml';
+import type * as dL from '../Declaration.js';
+import { JsonEncoding } from './Json.js';
+import { YamlEncoding } from './Yaml.js';
 
 export function getAllBuiltInEncodings(): dL.IEncoding[] {
 

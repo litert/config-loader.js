@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-import type * as dL from '../Declaration';
+import type * as dL from '../Declaration.js';
 export type { IDict } from '@litert/utils-ts-types';
 
 export interface IOperatorInfo {

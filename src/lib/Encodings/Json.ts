@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-import type * as dL from '../Declaration';
+import type * as dL from '../Declaration.js';
 
 /**
  * The encoding decoder for JSON.

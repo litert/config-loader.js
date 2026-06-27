@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import * as ConfigLoader from '../../lib';
+import * as ConfigLoader from '../../lib/index.js';
 
 export class UppercaseOperator implements ConfigLoader.IOperator {
 

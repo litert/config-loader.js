@@ -14,9 +14,9 @@
  *  limitations under the License.
  */
 
-import * as cL from '../Constants';
-import type * as dL from '../Declaration';
-import * as _ from '../Utils';
+import * as cL from '../Constants.js';
+import type * as dL from '../Declaration.js';
+import * as _ from '../Utils.js';
 
 class ImportBinaryFileBlockOperator implements dL.IBlockOperator {
 

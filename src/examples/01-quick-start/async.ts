@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-import * as ConfigLoader from '../../lib';
-import * as BuiltInEnc from '../../lib/Encodings';
-import * as BuiltInOps from '../../lib/Operators';
-import { LocalFileReader } from '../../lib/Readers/LocalFileReader';
+import * as ConfigLoader from '../../lib/index.js';
+import * as BuiltInEnc from '../../lib/Encodings/index.js';
+import * as BuiltInOps from '../../lib/Operators/index.js';
+import { LocalFileReader } from '../../lib/Readers/LocalFileReader.js';
 
 const loader = new ConfigLoader.ConfigLoader({
     'reader': new LocalFileReader({
@@ -37,10 +37,10 @@ process.env.TEST_BCD = '456';
 
 (async () => {
 
-    const ret = await loader.load(`${__dirname}/../../test-data/01/main.json`);
+    const ret = await loader.load(`${import.meta.dirname}/../../test-data/01/main.json`);
 
     await loader.load({
-        path: `${__dirname}/../../test-data/01/main.json`,
+        path: `${import.meta.dirname}/../../test-data/01/main.json`,
     });
 
     console.log(ret);

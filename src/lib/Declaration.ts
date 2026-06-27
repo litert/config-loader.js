@@ -17,7 +17,7 @@
 /* eslint-disable max-lines */
 
 import type * as dT from '@litert/utils-ts-types';
-import type { EOperatorMode, EContainerOperatorOrder } from './Constants';
+import type { EOperatorMode, EContainerOperatorOrder } from './Constants.js';
 
 /**
  * The additional options for operations.

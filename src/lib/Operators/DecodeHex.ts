@@ -14,9 +14,9 @@
  *  limitations under the License.
  */
 
-import type * as dL from '../Declaration';
-import * as cL from '../Constants';
-import * as _ from '../Utils';
+import type * as dL from '../Declaration.js';
+import * as cL from '../Constants.js';
+import * as _ from '../Utils.js';
 
 class DecodeHexBlockOperator implements dL.IBlockOperator {
 

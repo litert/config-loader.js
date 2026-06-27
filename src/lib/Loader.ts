@@ -14,12 +14,12 @@
  *  limitations under the License.
  */
 
-import type * as iL from './_internal/Decl';
-import type * as dL from './Declaration';
-import * as eL from './Errors';
-import * as _ from './Utils';
-import { SyncConfigLoader } from './_internal/SyncLoader';
-import { AsyncConfigLoader } from './_internal/AsyncLoader';
+import type * as iL from './_internal/Decl.js';
+import type * as dL from './Declaration.js';
+import * as eL from './Errors.js';
+import * as _ from './Utils.js';
+import { SyncConfigLoader } from './_internal/SyncLoader.js';
+import { AsyncConfigLoader } from './_internal/AsyncLoader.js';
 
 /**
  * The registration information of an operator, used in the constructor of `ConfigLoader`.

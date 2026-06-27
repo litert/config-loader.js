@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-import * as ConfigLoader from '../lib';
-import * as BuiltInEnc from '../lib/Encodings';
-import * as BuiltInOps from '../lib/Operators';
-import { LocalFileReader } from '../lib/Readers/LocalFileReader';
+import * as ConfigLoader from '../lib/index.js';
+import * as BuiltInEnc from '../lib/Encodings/index.js';
+import * as BuiltInOps from '../lib/Operators/index.js';
+import { LocalFileReader } from '../lib/Readers/LocalFileReader.js';
 
 const loader = new ConfigLoader.ConfigLoader({
     reader: new LocalFileReader({
@@ -54,7 +54,7 @@ const ret = loader.loadFromObjectSync({
     "importFileAsText": "{{text-file:./file1.yml}}",
     "importFileAsBinary": "{{binary-file:./file1.yml}}",
     "resolveRelativePath": "{{ path :./a/b/c}}"
-},`${__dirname}/../test-data/07/main.json`);
+},`${import.meta.dirname}/../test-data/07/main.json`);
 
 loader.loadFromObjectSync({
     configData: {
@@ -76,7 +76,7 @@ loader.loadFromObjectSync({
         "importFileAsBinary": "{{binary-file:./file1.yml}}",
         "resolveRelativePath": "{{ path :./a/b/c}}"
     },
-    path: `${__dirname}/../test-data/07/main.json`
+    path: `${import.meta.dirname}/../test-data/07/main.json`
 });
 
 console.log(ret);

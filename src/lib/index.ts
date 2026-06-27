@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-export * from './Constants';
-export * from './Declaration';
-export * from './Errors';
-export * from './Loader';
+export * from './Constants.js';
+export * from './Declaration.js';
+export * from './Errors.js';
+export * from './Loader.js';

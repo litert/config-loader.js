@@ -9,6 +9,9 @@ npm i @litert/config-loader
 npm i yaml # Optional, for YAML support
 ```
 
+> [!IMPORTANT]
+> `@litert/config-loader` is ESM-only and requires Node.js `>=20.0.0`.
+
 ## Usage
 
 1. Create a loader

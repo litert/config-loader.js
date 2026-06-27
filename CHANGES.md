@@ -1,5 +1,27 @@
 # Changes Logs
 
+## v2.0.0
+
+- build: raised the Node.js baseline to v20
+
+    The package now requires Node.js `>=20.0.0`, which provides the
+    `import.meta.dirname` and `import.meta.filename` support used by the
+    ESM runtime paths in the examples and tests.
+
+- build: migrated the package to ESM-only output
+
+    The package now publishes Node.js ESM entry points with a package
+    `exports` map, NodeNext TypeScript settings, and `.js`-suffixed
+    relative imports across the source, tests, and examples.
+
+- build: updated the package.json `exports` map to include the readers folder
+
+    The new `exports` removed `/lib/` from the paths, and turn the sub folders into lowercase,
+    so the `Readers` folder is now accessible as `@litert/config-loader/readers` instead of
+    `@litert/config-loader/Readers`.
+
+- chore: updated the dependencies to the latest versions
+
 ## v1.3.0
 
 - feat(loader): added ephemeral data sharing support during one time loading process

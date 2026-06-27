@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-import * as ConfigLoader from '../../lib';
-import * as BuiltInEnc from '../../lib/Encodings';
-import { LocalFileReader } from '../../lib/Readers/LocalFileReader';
-import { UppercaseOperator } from './uppercase-operator';
+import * as ConfigLoader from '../../lib/index.js';
+import * as BuiltInEnc from '../../lib/Encodings/index.js';
+import { LocalFileReader } from '../../lib/Readers/LocalFileReader.js';
+import { UppercaseOperator } from './uppercase-operator.js';
 
 const loader = new ConfigLoader.ConfigLoader({
     reader: new LocalFileReader({
@@ -29,6 +29,6 @@ const loader = new ConfigLoader.ConfigLoader({
     operators: [ new UppercaseOperator() ]
 });
 
-const ret = loader.loadSync(`${__dirname}/../../test-data/02/main.json`);
+const ret = loader.loadSync(`${import.meta.dirname}/../../test-data/02/main.json`);
 
 console.log(ret);

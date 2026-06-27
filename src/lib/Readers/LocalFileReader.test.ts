@@ -18,8 +18,8 @@ import * as NodeTest from 'node:test';
 import * as NodeFS from 'node:fs';
 import * as NodePath from 'node:path';
 import * as NodeAssert from 'node:assert';
-import { LocalFileReader } from './LocalFileReader';
-import { E_READ_FILE_FAILED } from '../Errors';
+import { LocalFileReader } from './LocalFileReader.js';
+import { E_READ_FILE_FAILED } from '../Errors.js';
 
 NodeTest.describe('Built-in DataReader: LocalFileReader', () => {
 
@@ -34,18 +34,18 @@ NodeTest.describe('Built-in DataReader: LocalFileReader', () => {
 
     NodeTest.it('Should be able to read a file synchronously', () => {
 
-        const thisContent = NodeFS.readFileSync(__filename);
+        const thisContent = NodeFS.readFileSync(import.meta.filename);
 
-        NodeAssert.strictEqual(reader.readSync(__filename).content instanceof Buffer, true);
-        NodeAssert.strictEqual(reader.readSync(__filename).encoding, 'javascript');
-        NodeAssert.strictEqual(reader.readSync(__filename).content.toString(), thisContent.toString());
+        NodeAssert.strictEqual(reader.readSync(import.meta.filename).content instanceof Buffer, true);
+        NodeAssert.strictEqual(reader.readSync(import.meta.filename).encoding, 'javascript');
+        NodeAssert.strictEqual(reader.readSync(import.meta.filename).content.toString(), thisContent.toString());
     });
 
     NodeTest.it('Should be able to read a file asynchronously', async () => {
 
-        const thisContent = await NodeFS.promises.readFile(__filename);
+        const thisContent = await NodeFS.promises.readFile(import.meta.filename);
 
-        const result = await reader.read(__filename);
+        const result = await reader.read(import.meta.filename);
 
         NodeAssert.strictEqual(result.content instanceof Buffer, true);
         NodeAssert.strictEqual(result.encoding, 'javascript');
@@ -90,24 +90,24 @@ NodeTest.describe('Built-in DataReader: LocalFileReader', () => {
     NodeTest.it('Should return empty type if the extension is unrecognizable', async () => {
 
         NodeAssert.strictEqual(
-            reader.readSync(__filename + '.map').encoding,
+            reader.readSync(import.meta.filename + '.map').encoding,
             ''
         );
 
         NodeAssert.strictEqual(
-            (await reader.read(__filename + '.map')).encoding,
+            (await reader.read(import.meta.filename + '.map')).encoding,
             ''
         );
 
         NodeAssert.strictEqual(
-            reader.readSync(NodePath.join(__dirname, '../../test-data/LocalFileReader/file-without-ext')).encoding,
+            reader.readSync(NodePath.join(import.meta.dirname, '../../test-data/LocalFileReader/file-without-ext')).encoding,
             ''
         );
     });
 
     NodeTest.it('Should resolve absolute path as it is', async () => {
 
-        const filePath = __filename + '.map';
+        const filePath = import.meta.filename + '.map';
 
         NodeAssert.strictEqual(
             reader.resolvePath('', filePath),
@@ -117,11 +117,11 @@ NodeTest.describe('Built-in DataReader: LocalFileReader', () => {
 
     NodeTest.it('Should resolve relative path referring to the first file', async () => {
 
-        const filePath = __filename + '.map';
+        const filePath = import.meta.filename + '.map';
 
         NodeAssert.strictEqual(
             reader.resolvePath(filePath, '../123.txt'),
-            NodePath.resolve(__dirname, '../123.txt')
+            NodePath.resolve(import.meta.dirname, '../123.txt')
         );
     });
 });

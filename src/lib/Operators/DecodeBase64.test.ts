@@ -16,9 +16,9 @@
 
 import * as NodeTest from 'node:test';
 import * as NodeAssert from 'node:assert';
-import { DecodeBase64Operator } from './DecodeBase64';
-import * as cL from '../Constants';
-import type { IOperator } from '../Declaration';
+import { DecodeBase64Operator } from './DecodeBase64.js';
+import * as cL from '../Constants.js';
+import type { IOperator } from '../Declaration.js';
 
 NodeTest.describe('Built-in Operator: DecodeBase64', () => {
 
