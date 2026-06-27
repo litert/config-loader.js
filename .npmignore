@@ -24,3 +24,6 @@
 *.test.d.ts.map
 /docs/website/
 typedoc-sidebar.json
+/skills-lock.json
+/.agents/skills/
+/.ai/

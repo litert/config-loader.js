@@ -5,3 +5,6 @@
 /docs/api-docs/
 /docs/api-docs.tgz
 typedoc-sidebar.json
+/skills-lock.json
+/.agents/skills/
+/.ai/
